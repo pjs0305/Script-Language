@@ -51,6 +51,8 @@ DailyTypeIntVar = None
 UDTypeIntVar = None
 MinuteList = None
 HourIntVar = None
+# 시간 버튼 프레임
+ButtonFrame = None
 
 def CreateWindow(): # 윈도우 설정
     global MainWindow
@@ -319,7 +321,7 @@ def ShowSchedule():
     OpenRightWindow()
     
     # 모든 시간표 파싱
-    global StationSchedule, HourList
+    global StationSchedule
 
     # 현재 선택된 지하철역
     select = StationListBox.curselection()
@@ -328,15 +330,13 @@ def ShowSchedule():
         for UDtype in ["상행", "하행"]:
             StationSchedule[Dtype][UDIndex[UDtype]][UDtype] = FindSchedule(stationListId[select[0]], ScheduleText[Dtype], ScheduleText[UDtype])
 
-    # [요일][0, 1][상하행]
-    for Dtype in ["평일", "토요일", "일요일"]:
-        for UDtype in ["상행", "하행"]:
-            HourList[Dtype] [UDIndex[UDtype]]   [UDtype] = ExtractDictKey_Int(StationSchedule[Dtype]    [UDIndex[UDtype]]   [UDtype])
-
     # 시간표 위젯 만들기
     CreateScheduleWidget()
 
     #ShowScheduleList()
+
+def ShowHourList():
+    a = 0
 
 def ShowScheduleList():
     global MinuteList
@@ -348,6 +348,7 @@ def ShowScheduleList():
     # DailyTypeIntVar, UDTypeIntVar, HourIntVar
     i = 0
     print(StationSchedule[ScheduleDailyTypeText[DailyTypeIntVar.get()]]  [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]])
+
     for Minute in StationSchedule[ScheduleDailyTypeText[DailyTypeIntVar.get()]]  [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]]:
         MinuteList.insert(i, Minute)
         i += 1
@@ -378,18 +379,18 @@ def CreateScheduleWidget():
     DailyTypeIntVar = IntVar()
     UDTypeIntVar = IntVar()
 
-    WeekDay = Radiobutton(RightWindow, text = "평일", value = 0, variable=DailyTypeIntVar, command=ShowScheduleList)
+    WeekDay = Radiobutton(RightWindow, text = "평일", value = 0, variable=DailyTypeIntVar, command=ShowHourList)
     WeekDay.place(x=30, y=90)
     WeekDay.select()
-    Saturday = Radiobutton(RightWindow, text = "토요일", value = 1, variable=DailyTypeIntVar, command=ShowScheduleList)
+    Saturday = Radiobutton(RightWindow, text = "토요일", value = 1, variable=DailyTypeIntVar, command=ShowHourList)
     Saturday.place(x=100, y=90)
-    Sunday = Radiobutton(RightWindow, text = "일요일", value = 2, variable=DailyTypeIntVar, command=ShowScheduleList)
+    Sunday = Radiobutton(RightWindow, text = "일요일", value = 2, variable=DailyTypeIntVar, command=ShowHourList)
     Sunday.place(x=170, y=90)
 
-    Up = Radiobutton(RightWindow, text = "상행", value = 0, variable=UDTypeIntVar, command=ShowScheduleList)
+    Up = Radiobutton(RightWindow, text = "상행", value = 0, variable=UDTypeIntVar, command=ShowHourList)
     Up.place(x=30, y=130)
     Up.select()
-    Down = Radiobutton(RightWindow, text = "하행", value = 1, variable=UDTypeIntVar, command=ShowScheduleList)
+    Down = Radiobutton(RightWindow, text = "하행", value = 1, variable=UDTypeIntVar, command=ShowHourList)
     Down.place(x=100, y=130)
 
     # 검색결과 리스트
@@ -406,20 +407,30 @@ def CreateScheduleWidget():
     ListFrame.place(x = 200, y = 200)
 
     # 시간 버튼들
+
     global HourIntVar
     HourIntVar = IntVar()
 
+    global ButtonFrame
+    ButtonFrame = Frame(RightWindow)
+
     x = y = 0
-    for Hour in HourList[ScheduleDailyTypeText[DailyTypeIntVar.get()]]  [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]]:
+    #print(StationSchedule[ScheduleDailyTypeText[DailyTypeIntVar.get()]]   [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]])
+    for Hour in StationSchedule[ScheduleDailyTypeText[DailyTypeIntVar.get()]]   [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]]:
+        print(Hour)
         # 평일 or 토요일 일요일
         # 0 or 1
         # 상행 or 하행
-        radio = Radiobutton(RightWindow, text=Hour, value=y*3 + x, variable=HourIntVar, command=ShowScheduleList)
-        radio.place(x = 15 + x*50, y=200 + y*40)
-        x+=1
-        if x%3 == 0:
-            y+=1
+        radio = Radiobutton(ButtonFrame, text=Hour, value=y*3 + x, variable=HourIntVar, command=ShowScheduleList)
+        radio.pack()
+        #radio.place(x = x*50, y = y*40)
+        x += 1
+        if x % 3 == 0:
+            y += 1
             x=0
+
+    #ButtonFrame.pack()
+    ButtonFrame.place(x=15, y=200)
 
 # 함수 호출
 CreateWindow()
