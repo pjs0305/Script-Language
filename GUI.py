@@ -35,8 +35,20 @@ SearchExitNo = [] # 검색된 지하철역 출구 번호 리스트
 ExitNoVar = None
 
 # 시간표 검색 관련
-StationSchedule = {} # 검색된 지하철역 시간표
-HourList = []
+ScheduleText = {"평일" : "01", "토요일" : "02", "일요일" : "03", "상행" : "U", "하행" : "D"}
+UDIndex = {"상행" : 0, "하행" : 1}
+# 검색된 지하철역 시간표 ( Hour : 분 )
+StationSchedule = { "평일"      : [ {"상행" : None }, { "하행" : None } ], \
+                    "토요일"    : [ {"상행" : None }, { "하행" : None } ], \
+                    "일요일"    : [ {"상행" : None }, { "하행" : None } ]   }
+# 검색된 지하철역 시간
+HourList = { "평일"      : [ {"상행" : None }, { "하행" : None } ], \
+             "토요일"    : [ {"상행" : None }, { "하행" : None } ], \
+             "일요일"    : [ {"상행" : None }, { "하행" : None } ]   }
+DailyTypeIntVar = None
+UDTypeIntVar = None
+MinuteList = None
+HourIntVar = None
 
 def CreateWindow(): # 윈도우 설정
     global MainWindow
@@ -304,19 +316,24 @@ def ShowSchedule():
     SetRight()
     OpenRightWindow()
 
-    # 현재 선택된 지하철역
-    select = StationListBox.curselection()
-
     # 시간표 위젯 만들기
     CreateScheduleWidget()
     
-    # 시간표 파싱
+    # 모든 시간표 파싱
     global StationSchedule, HourList
-    StationSchedule = FindSchedule(stationListId[select[0]])
-    HourList = ExtractDictKey(StationSchedule)
 
+    # 현재 선택된 지하철역
+    select = StationListBox.curselection()
 
-    ShowScheduleList()
+    for Dtype in ["평일", "토요일", "일요일"]:
+        for UDtype in ["상행", "하행"]:
+            StationSchedule[Dtype][UDIndex[UDtype]][UDtype] = FindSchedule(stationListId[select[0]], ScheduleText[Dtype], ScheduleText[UDtype])
+
+    for Dtype in ["평일", "토요일", "일요일"]:
+        for UDtype in ["상행", "하행"]:
+            HourList[Dtype][UDIndex[UDtype]][UDtype] = ExtractDictKey_Int(StationSchedule[Dtype][UDIndex[UDtype]][UDtype])
+
+    #ShowScheduleList()
 
 def ShowScheduleList():
     global BuildingList, ExitNoVar
@@ -333,45 +350,66 @@ def ShowScheduleList():
     BuildingList.config(state='disabled')
 
 def CreateScheduleWidget():
-    # 시간표 검색타입
+    # 현재 선택된 지하철역
+    select = StationListBox.curselection()
+
+    # 현재 선택된 지하철역 이름과 라인 구분
+    TEXT = stationList[stationListId[select[0]]]
+    if TEXT[len(TEXT) - 1:len(TEXT)] != "역":
+        TEXT += "역" + " " + "[" + FindStationLine(stationListId[select[0]]) + "]"
+
+    StationText = Label(RightWindow, text=TEXT, font=Subfont)
+    StationText.place(x=15, y=50)
+
+    # 그 외 글자들
+    Text1 = Label(RightWindow, text="시간", font=Subfont)
+    Text1.place(x=15, y=160)
+
+    Text2 = Label(RightWindow, text="분", font=Subfont)
+    Text2.place(x=200, y=160)
+
+    # 시간표 검색타입 버튼
     global DailyTypeIntVar, UDTypeIntVar
     DailyTypeIntVar = IntVar()
     UDTypeIntVar = IntVar()
 
     WeekDay = Radiobutton(RightWindow, text = "평일", value = "01", variable=DailyTypeIntVar)
-    WeekDay.place(x=180, y=390)
+    WeekDay.place(x=30, y=80)
     Saturday = Radiobutton(RightWindow, text = "토요일", value = "02", variable=DailyTypeIntVar)
-    Saturday.place(x=180, y=420)
+    Saturday.place(x=100, y=80)
     Sunday = Radiobutton(RightWindow, text = "일요일", value = "03", variable=DailyTypeIntVar)
-    Sunday.place(x=180, y=450)
+    Sunday.place(x=170, y=80)
 
     Up = Radiobutton(RightWindow, text = "상행", value = "U", variable=UDTypeIntVar)
-    Up.place(x=270, y=400)
+    Up.place(x=30, y=120)
     Down = Radiobutton(RightWindow, text = "하행", value = "D", variable=UDTypeIntVar)
-    Down.place(x=270, y=440)
-
-    # 글자들
-    TEXT = stationList[stationListId[select[0]]]
-    if TEXT[len(TEXT)-1:len(TEXT)] != "역":
-        TEXT += "역"
-        
-    StationText = Label(RightWindow, text=TEXT, font=Subfont)
-    StationText.place(x = 15 , y=50)
-    Text1 = Label(RightWindow, text="건물이름 리스트", font=Subfont)
-    Text1.place(x=15, y=220)
-    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
-    Text2.place(x=15, y=90)
+    Down.place(x=100, y=120)
 
     # 검색결과 리스트
-    global BuildingList
-    ListFrame = Frame(window)
+    global MinuteList
+    ListFrame = Frame(RightWindow)
+
     scrollbar = Scrollbar(ListFrame)
     scrollbar.pack(side="right", fill="y")
-    BuildingList = Listbox(ListFrame, width= 43, height=13, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
-    BuildingList.pack()
-    scrollbar.config(command=BuildingList.yview)
-    ListFrame.place(x = 15, y = 250)
 
+    MinuteList = Listbox(ListFrame, width= 20, height=16, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
+    MinuteList.pack()
+
+    scrollbar.config(command=MinuteList.yview)
+    ListFrame.place(x = 200, y = 200)
+
+    # 시간 버튼들
+    global HourIntVar
+    HourIntVar = IntVar()
+
+    x = y = 0
+    for Hour in HourList[DailyTypeIntVar.get()][UDIndex[UDTypeIntVar.get()]][UDTypeIntVar.get()]:
+        radio = Radiobutton(RightWindow, text=Hour, value=y*3 + x, variable=HourIntVar, command=ShowScheduleList)
+        radio.place(x = 15 + x*20, y=180 + y*20)
+        x+=1
+        if x%3 == 0:
+            y+=1
+            x=0
 
 # 함수 호출
 CreateWindow()

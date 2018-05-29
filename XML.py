@@ -41,8 +41,8 @@ def FindStation(text):
 
     return searchList
 
-def FindStationLine(text): # 지하철역 ID에 따라 라인 구분
-    LineId = text[3:]
+def FindStationLine(ID): # 지하철역 ID에 따라 라인 구분
+    LineId = ID[3:]
 
     Line = ""
     # 100 ~ 999
@@ -213,7 +213,8 @@ def FindSchedule(ID, DayType, UDType):
             HourList[time.text[:2]] = []
         HourList[time.text[:2]].append(time.text[2:4])
 
-    PrintDict(HourList)
+    #PrintDict(HourList)
+
     return HourList
 
 # 사전 키값 리스트로 뽑아내기
@@ -222,6 +223,14 @@ def ExtractDictKey(Dict): # 사전의 키값들만 리스트로 뽑아내는 함
 
     for i in Dict.keys():
         KeyList.append(i)
+
+    return KeyList
+
+def ExtractDictKey_Int(Dict): # 사전의 키값들만 리스트로 뽑아내는 함수
+    KeyList = []
+
+    for i in Dict.keys():
+        KeyList.append(int(i))
 
     return KeyList
 
