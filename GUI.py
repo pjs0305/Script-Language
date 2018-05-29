@@ -2,6 +2,41 @@ from tkinter import *
 from tkinter import font
 from XML import *
 
+# 윈도우창
+MainWindow = Tk()
+
+# 윈도우창 내부 분할 창
+LeftWindow = Frame(MainWindow, relief="solid", bd=1)
+RightWindow = Frame(MainWindow, relief="solid", bd=1)
+
+# 윈도우창 펼칠지 안펼칠지 판단하는 변수
+RightWindowOpen = False
+
+# 글자 폰트들
+Titlefont = font.Font(size=20, weight='bold', family='굴림')
+Mainfont = font.Font(size=16, weight='bold', family='굴림')
+Subfont = font.Font(size=13, family='굴림')
+Listfont = font.Font(size=12, family='굴림')
+
+# 지하철역 저장 변수
+stationList = {} # 검색된 지하철역 ( ID : 이름 )
+stationListId = [] # 검색된 지하철역 ID 리스트
+
+# 버스 검색 관련
+SearchBus = {} # 검색된 지하철역 주변 버스 ( ExitNo : BusNo )
+BusNoList = None
+
+# 건물 검색 관련
+SearchBuilding = {} # 검색된 지하철역 주변 건물 ( ExitNo : BuildingName )
+BuildingList = None
+
+# 출구 번호 관련
+SearchExitNo = [] # 검색된 지하철역 출구 번호 리스트
+ExitNoVar = None
+
+# 시간표 검색 관련
+StationSchedule = {} # 검색된 지하철역 시간표
+HourList = []
 
 def CreateWindow(): # 윈도우 설정
     global MainWindow
@@ -46,16 +81,17 @@ def CreateWindow(): # 윈도우 설정
     # 버튼
     global BusButton
     BusButton = Button(LeftWindow, font=Listfont, text="출구별 주변 버스 조회", command=ShowBus, state="disabled")
-    BusButton.place(x=115, y=310)
+    BusButton.place(x=115, y=320)
 
     global BuildingButton
     BuildingButton = Button(LeftWindow, font=Listfont, text="출구별 주변 건물 조회", command=ShowBuilding, state="disabled")
-    BuildingButton.place(x=115, y=350)
+    BuildingButton.place(x=115, y=380)
 
     global ScheduleButton
     ScheduleButton = Button(LeftWindow, font=Listfont, text="시간표 조회", command=ShowSchedule, state="disabled")
-    ScheduleButton.place(x=50, y=420)
+    ScheduleButton.place(x=150, y=440)
 
+    global OpenButton
     OpenButton = Checkbutton(LeftWindow, text="정보 보기", command=OpenCloseRight)
     OpenButton.place(x=300, y=280)
 
@@ -68,39 +104,46 @@ def SetRight(): # 오른쪽 창 설정
     RightWindow = Frame(MainWindow, relief="solid", bd=1)
     RightWindow.pack(side="right", fill="both")
 
-    if Open == 1:
+    if RightWindowOpen == True  :
         RightWindow.pack(expand=True)
 
-    MainText = Label(RightWindow, font = Mainfont, text = "지하철역 정보 조회 결과")
-    MainText.place(x=80, y=10)
+    RightWindowMainText = Label(RightWindow, font = Mainfont, text = "지하철역 정보 조회 결과")
+    RightWindowMainText.place(x=80, y=10)
 
 def OpenCloseRight(): # 오른쪽 창 펼치거나 닫기
-    global Open, MainWindow, RightWindow
-    Open = (Open + 1) % 2
-    if Open == 1:
+    global RightWindowOpen
+
+    if RightWindowOpen:
+        RightWindowOpen = False
+    else:
+        RightWindowOpen = True
+
+    if RightWindowOpen == True:
         MainWindow.geometry("800x500")
         RightWindow.pack(expand=True)
     else:
         MainWindow.geometry("400x500")
         RightWindow.pack(expand=False)
 
-def OpenRight():
-    global Open, MainWindow, RightWindow
-    if Open == 0:
-        Open = 1
+def OpenRightWindow():
+    global RightWindowOpen, OpenButton
+
+    if RightWindowOpen == False:
+        RightWindowOpen = True
         OpenButton.select()
         MainWindow.geometry("800x500")
         RightWindow.pack(expand=True)
 
 def SearchStation():
+    SetRight()
+
+    StationListBox.delete(0, END) # 검색된 리스트박스 초기화
+
     global stationList, stationListId
-    
-    StationListBox.delete(0, END) # 검색된 리스트 초기화
     stationList = FindStation(InputStation.get()) # 검색한 문자열로 지하철역 검색
-    stationListId = ExtractDictKey(stationList)
+    stationListId = ExtractDictKey(stationList) # 검색된 지하철역 ID만 저장
 
     # 검색 결과를 리스트 박스에 추가
-    global StationListBox
     i = 0
     for Station in stationList:
         str = stationList[Station] + " " + "[" + FindStationLine(Station) + "]"
@@ -122,8 +165,8 @@ def SearchStation():
 
 
 def ShowBus(): # 버스 조회 GUI
-    OpenRight()
     SetRight()
+    OpenRightWindow()
 
     # 현재 선택된 지하철역으로 춣구별 주변 버스 찾기
     select = StationListBox.curselection()
@@ -132,15 +175,19 @@ def ShowBus(): # 버스 조회 GUI
     SearchBus = FindBus(stationListId[select[0]])
     SearchExitNo = ExtractDictKey(SearchBus)
 
+    # 선택된 지하철역 글자
     TEXT = stationList[stationListId[select[0]]]
     if TEXT[len(TEXT)-1:len(TEXT)] != "역":
         TEXT += "역"
-
     StationText = Label(RightWindow, text=TEXT, font=Subfont)
     StationText.place(x = 15 , y=50)
 
+    # 그 외 글자들
     Text1 = Label(RightWindow, text="버스번호 리스트", font=Subfont)
     Text1.place(x=180, y=90)
+
+    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
+    Text2.place(x=15, y=90)
 
     # 검색결과 리스트
     global BusNoList
@@ -154,12 +201,9 @@ def ShowBus(): # 버스 조회 GUI
     BusNoList.pack()
 
     scrollbar.config(command=BusNoList.yview)
-
-    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
-    Text2.place(x=15, y=90)
-
     ListFrame.place(x = 180, y = 120)
 
+    # 출구 번호 버튼들
     global ExitNoVar
     ExitNoVar = IntVar()
 
@@ -172,13 +216,11 @@ def ShowBus(): # 버스 조회 GUI
             y+=1
             x=0
 
+    # 보여주기
     ShowBusList()
 
-def ShowBusList():
-    global BusNoList
-
-    BusNoList.config(state='normal')
-
+def ShowBusList(): # 버스 리스트박스에 출력
+    BusNoList.config(state='normal') # 리스트박스 일반 상태로
     BusNoList.delete(0, END)  # 검색된 리스트 초기화
 
     i = 0
@@ -186,31 +228,35 @@ def ShowBusList():
         BusNoList.insert(i, BusNo)
         i += 1
 
-    BusNoList.config(state='disabled')
+    BusNoList.config(state='disabled') # 리스트박스 읽기 상태로
 
 
 def ShowBuilding():
-    OpenRight()
     SetRight()
+    OpenRightWindow()
 
-    # 현재 선택된 지하철역으로 춣구별 주변 건물 찾기
+    # 현재 선택된 지하철역
     select = StationListBox.curselection()
 
+    # 지하철역 주변 버스, 출구 파싱
     global SearchBuilding, SearchExitNo
     SearchBuilding = FindBuilding(stationListId[select[0]])
     SearchExitNo = ExtractDictKey(SearchBuilding)
 
+    # 선택된 지하철역 글자
     TEXT = stationList[stationListId[select[0]]]
     if TEXT[len(TEXT)-1:len(TEXT)] != "역":
         TEXT += "역"
 
-    global RightWindow
-
     StationText = Label(RightWindow, text=TEXT, font=Subfont)
     StationText.place(x = 15 , y=50)
 
+    # 그 외 글자
     Text1 = Label(RightWindow, text="건물이름 리스트", font=Subfont)
     Text1.place(x=15, y=220)
+
+    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
+    Text2.place(x=15, y=90)
 
     # 검색결과 리스트
     global BuildingList
@@ -224,12 +270,9 @@ def ShowBuilding():
     BuildingList.pack()
 
     scrollbar.config(command=BuildingList.yview)
-
-    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
-    Text2.place(x=15, y=90)
-
     ListFrame.place(x = 15, y = 250)
 
+    # 출구 번호 버튼들
     global ExitNoVar
     ExitNoVar = IntVar()
 
@@ -242,13 +285,11 @@ def ShowBuilding():
             y+=1
             x=0
 
+    # 보여주기
     ShowBuildingList()
 
 def ShowBuildingList():
-    global BuildingList
-
     BuildingList.config(state='normal')
-
     BuildingList.delete(0, END)  # 검색된 리스트 초기화
 
     i = 0
@@ -260,17 +301,20 @@ def ShowBuildingList():
 
 
 def ShowSchedule():
-    OpenRight()
     SetRight()
+    OpenRightWindow()
 
-    # 현재 선택된 지하철역으로 춣구별 주변 건물 찾기
+    # 현재 선택된 지하철역
     select = StationListBox.curselection()
 
-    global SearchBuilding, SearchExitNo
-    SearchBuilding = FindBuilding(stationListId[select[0]])
-    SearchExitNo = ExtractDictKey(SearchBuilding)
+    # 시간표 위젯 만들기
+    CreateScheduleWidget()
+    
+    # 시간표 파싱
+    global StationSchedule, HourList
+    StationSchedule = FindSchedule(stationListId[select[0]])
+    HourList = ExtractDictKey(StationSchedule)
 
-    CreateScheduleWidget(rightwin)
 
     ShowScheduleList()
 
@@ -288,22 +332,22 @@ def ShowScheduleList():
 
     BuildingList.config(state='disabled')
 
-def CreateScheduleWidget(window):
+def CreateScheduleWidget():
     # 시간표 검색타입
     global DailyTypeIntVar, UDTypeIntVar
     DailyTypeIntVar = IntVar()
     UDTypeIntVar = IntVar()
 
-    WeekDay = Radiobutton(window, text = "평일", value = "01", variable=DailyTypeIntVar)
+    WeekDay = Radiobutton(RightWindow, text = "평일", value = "01", variable=DailyTypeIntVar)
     WeekDay.place(x=180, y=390)
-    Saturday = Radiobutton(window, text = "토요일", value = "02", variable=DailyTypeIntVar)
+    Saturday = Radiobutton(RightWindow, text = "토요일", value = "02", variable=DailyTypeIntVar)
     Saturday.place(x=180, y=420)
-    Sunday = Radiobutton(window, text = "일요일", value = "03", variable=DailyTypeIntVar)
+    Sunday = Radiobutton(RightWindow, text = "일요일", value = "03", variable=DailyTypeIntVar)
     Sunday.place(x=180, y=450)
 
-    Up = Radiobutton(window, text = "상행", value = "U", variable=UDTypeIntVar)
+    Up = Radiobutton(RightWindow, text = "상행", value = "U", variable=UDTypeIntVar)
     Up.place(x=270, y=400)
-    Down = Radiobutton(window, text = "하행", value = "D", variable=UDTypeIntVar)
+    Down = Radiobutton(RightWindow, text = "하행", value = "D", variable=UDTypeIntVar)
     Down.place(x=270, y=440)
 
     # 글자들
@@ -311,11 +355,11 @@ def CreateScheduleWidget(window):
     if TEXT[len(TEXT)-1:len(TEXT)] != "역":
         TEXT += "역"
         
-    StationText = Label(window, text=TEXT, font=Subfont)
+    StationText = Label(RightWindow, text=TEXT, font=Subfont)
     StationText.place(x = 15 , y=50)
-    Text1 = Label(window, text="건물이름 리스트", font=Subfont)
+    Text1 = Label(RightWindow, text="건물이름 리스트", font=Subfont)
     Text1.place(x=15, y=220)
-    Text2 = Label(window, text="출구번호", font=Subfont)
+    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
     Text2.place(x=15, y=90)
 
     # 검색결과 리스트
@@ -328,3 +372,9 @@ def CreateScheduleWidget(window):
     scrollbar.config(command=BuildingList.yview)
     ListFrame.place(x = 15, y = 250)
 
+
+# 함수 호출
+CreateWindow()
+SetRight()
+
+MainWindow.mainloop()
