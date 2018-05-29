@@ -17,7 +17,6 @@ def LoadXML(search, key, **data):
     s += "numOfRows=1000"
     request = urllib.request.Request(s)
     response = urllib.request.urlopen(request)
-    rescode = response.getcode()
     response_body = response.read()
     dom = parseString(response_body)
 
@@ -213,7 +212,7 @@ def FindSchedule(ID, DayType, UDType):
             HourList[time.text[:2]] = []
         HourList[time.text[:2]].append(time.text[2:4])
 
-    #PrintDict(HourList)
+    PrintDict(HourList)
 
     return HourList
 
@@ -223,14 +222,6 @@ def ExtractDictKey(Dict): # 사전의 키값들만 리스트로 뽑아내는 함
 
     for i in Dict.keys():
         KeyList.append(i)
-
-    return KeyList
-
-def ExtractDictKey_Int(Dict): # 사전의 키값들만 리스트로 뽑아내는 함수
-    KeyList = []
-
-    for i in Dict.keys():
-        KeyList.append(int(i))
 
     return KeyList
 

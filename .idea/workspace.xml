@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/XML.py" line="4" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6722f0c8-8b85-4773-9f24-3a12e10fc711" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,40 +14,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="XML.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="XML.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/XML.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
+            <state relative-caret-position="475">
+              <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#478#905#0" />
-                <element signature="e#859#1269#0" />
-                <element signature="e#1346#4699#0" />
-                <element signature="e#3105#3756#0" />
-                <element signature="e#3804#4094#0" />
-                <element signature="e#5297#5382#0" />
+                <element signature="e#466#893#0" />
+                <element signature="e#929#1363#0" />
+                <element signature="e#1414#4847#0" />
+                <element signature="e#4878#5331#0" />
+                <element signature="e#5367#5847#0" />
+                <element signature="e#5901#6424#0" />
+                <element signature="e#6498#6583#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-118">
-              <caret line="236" column="58" lean-forward="true" selection-start-line="236" selection-start-column="58" selection-end-line="236" selection-end-column="58" />
+            <state relative-caret-position="11">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#549#801#0" />
-                <element signature="e#873#2418#0" />
-                <element signature="e#2547#2809#0" />
-                <element signature="e#2274#2501#0" />
-                <element signature="e#3162#3279#0" />
-                <element signature="e#2594#3413#0" />
-                <element signature="e#3901#5055#0" />
-                <element signature="e#5656#5889#0" />
-                <element signature="e#7440#7737#0" />
+                <element signature="e#1602#3458#0" />
+                <element signature="e#3491#3869#0" />
+                <element signature="e#3913#4231#0" />
+                <element signature="e#4260#4464#0" />
+                <element signature="e#4491#5358#0" />
+                <element signature="e#5392#6800#0" />
+                <element signature="e#6840#7106#0" />
+                <element signature="e#7133#8591#0" />
+                <element signature="e#8621#8880#0" />
+                <element signature="e#8907#9339#0" />
+                <element signature="e#9565#11180#0" />
+                <element signature="e#10322#11929#0" />
+                <element signature="e#11918#13351#0" />
               </folding>
             </state>
           </provider>
@@ -65,6 +71,9 @@
       <find>BusNoList</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -72,8 +81,8 @@
         <option value="$PROJECT_DIR$/loadXML.py" />
         <option value="$PROJECT_DIR$/read.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/XML.py" />
         <option value="$PROJECT_DIR$/GUI.py" />
+        <option value="$PROJECT_DIR$/XML.py" />
       </list>
     </option>
   </component>
@@ -248,13 +257,13 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1421875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.32943678" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2794899" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947917" weight="0.32943678" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947917" weight="0.3287234" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27872342" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995749" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39893618" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -276,17 +285,10 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="34" />
+      <option name="time" value="39" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/XML.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2793">
-          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/read.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -617,37 +619,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML.py">
+    <entry file="file://$PROJECT_DIR$/노선.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#478#905#0" />
-            <element signature="e#859#1269#0" />
-            <element signature="e#1346#4699#0" />
-            <element signature="e#3105#3756#0" />
-            <element signature="e#3804#4094#0" />
-            <element signature="e#5297#5382#0" />
-          </folding>
+        <state relative-caret-position="-117">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="236" column="58" lean-forward="true" selection-start-line="236" selection-start-column="58" selection-end-line="236" selection-end-column="58" />
+        <state relative-caret-position="11">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#549#801#0" />
-            <element signature="e#873#2418#0" />
-            <element signature="e#2547#2809#0" />
-            <element signature="e#2274#2501#0" />
-            <element signature="e#3162#3279#0" />
-            <element signature="e#2594#3413#0" />
-            <element signature="e#3901#5055#0" />
-            <element signature="e#5656#5889#0" />
-            <element signature="e#7440#7737#0" />
+            <element signature="e#1602#3458#0" />
+            <element signature="e#3491#3869#0" />
+            <element signature="e#3913#4231#0" />
+            <element signature="e#4260#4464#0" />
+            <element signature="e#4491#5358#0" />
+            <element signature="e#5392#6800#0" />
+            <element signature="e#6840#7106#0" />
+            <element signature="e#7133#8591#0" />
+            <element signature="e#8621#8880#0" />
+            <element signature="e#8907#9339#0" />
+            <element signature="e#9565#11180#0" />
+            <element signature="e#10322#11929#0" />
+            <element signature="e#11918#13351#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XML.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
+          <folding>
+            <element signature="e#466#893#0" />
+            <element signature="e#929#1363#0" />
+            <element signature="e#1414#4847#0" />
+            <element signature="e#4878#5331#0" />
+            <element signature="e#5367#5847#0" />
+            <element signature="e#5901#6424#0" />
+            <element signature="e#6498#6583#0" />
           </folding>
         </state>
       </provider>
