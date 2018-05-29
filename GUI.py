@@ -36,6 +36,8 @@ ExitNoVar = None
 
 # 시간표 검색 관련
 ScheduleText = {"평일" : "01", "토요일" : "02", "일요일" : "03", "상행" : "U", "하행" : "D"}
+ScheduleDailyTypeText = ["평일", "토요일", "일요일"]
+ScheduleUDTypeText = ["상행", "하행"]
 UDIndex = {"상행" : 0, "하행" : 1}
 # 검색된 지하철역 시간표 ( Hour : 분 )
 StationSchedule = { "평일"      : [ {"상행" : None }, { "하행" : None } ], \
@@ -315,9 +317,6 @@ def ShowBuildingList():
 def ShowSchedule():
     SetRight()
     OpenRightWindow()
-
-    # 시간표 위젯 만들기
-    CreateScheduleWidget()
     
     # 모든 시간표 파싱
     global StationSchedule, HourList
@@ -329,25 +328,31 @@ def ShowSchedule():
         for UDtype in ["상행", "하행"]:
             StationSchedule[Dtype][UDIndex[UDtype]][UDtype] = FindSchedule(stationListId[select[0]], ScheduleText[Dtype], ScheduleText[UDtype])
 
+    # [요일][0, 1][상하행]
     for Dtype in ["평일", "토요일", "일요일"]:
         for UDtype in ["상행", "하행"]:
-            HourList[Dtype][UDIndex[UDtype]][UDtype] = ExtractDictKey_Int(StationSchedule[Dtype][UDIndex[UDtype]][UDtype])
+            HourList[Dtype] [UDIndex[UDtype]]   [UDtype] = ExtractDictKey_Int(StationSchedule[Dtype]    [UDIndex[UDtype]]   [UDtype])
+
+    # 시간표 위젯 만들기
+    CreateScheduleWidget()
 
     #ShowScheduleList()
 
 def ShowScheduleList():
-    global BuildingList, ExitNoVar
+    global MinuteList
 
-    BuildingList.config(state='normal')
+    MinuteList.config(state='normal')
 
-    BuildingList.delete(0, END)  # 검색된 리스트 초기화
+    MinuteList.delete(0, END)  # 검색된 리스트 초기화
 
+    # DailyTypeIntVar, UDTypeIntVar, HourIntVar
     i = 0
-    for Building in SearchBuilding[SearchExitNo[ExitNoVar.get()]]:
-        BuildingList.insert(i, Building)
+    print(StationSchedule[ScheduleDailyTypeText[DailyTypeIntVar.get()]]  [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]])
+    for Minute in StationSchedule[ScheduleDailyTypeText[DailyTypeIntVar.get()]]  [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]]:
+        MinuteList.insert(i, Minute)
         i += 1
 
-    BuildingList.config(state='disabled')
+        MinuteList.config(state='disabled')
 
 def CreateScheduleWidget():
     # 현재 선택된 지하철역
@@ -373,17 +378,19 @@ def CreateScheduleWidget():
     DailyTypeIntVar = IntVar()
     UDTypeIntVar = IntVar()
 
-    WeekDay = Radiobutton(RightWindow, text = "평일", value = "01", variable=DailyTypeIntVar)
-    WeekDay.place(x=30, y=80)
-    Saturday = Radiobutton(RightWindow, text = "토요일", value = "02", variable=DailyTypeIntVar)
-    Saturday.place(x=100, y=80)
-    Sunday = Radiobutton(RightWindow, text = "일요일", value = "03", variable=DailyTypeIntVar)
-    Sunday.place(x=170, y=80)
+    WeekDay = Radiobutton(RightWindow, text = "평일", value = 0, variable=DailyTypeIntVar, command=ShowScheduleList)
+    WeekDay.place(x=30, y=90)
+    WeekDay.select()
+    Saturday = Radiobutton(RightWindow, text = "토요일", value = 1, variable=DailyTypeIntVar, command=ShowScheduleList)
+    Saturday.place(x=100, y=90)
+    Sunday = Radiobutton(RightWindow, text = "일요일", value = 2, variable=DailyTypeIntVar, command=ShowScheduleList)
+    Sunday.place(x=170, y=90)
 
-    Up = Radiobutton(RightWindow, text = "상행", value = "U", variable=UDTypeIntVar)
-    Up.place(x=30, y=120)
-    Down = Radiobutton(RightWindow, text = "하행", value = "D", variable=UDTypeIntVar)
-    Down.place(x=100, y=120)
+    Up = Radiobutton(RightWindow, text = "상행", value = 0, variable=UDTypeIntVar, command=ShowScheduleList)
+    Up.place(x=30, y=130)
+    Up.select()
+    Down = Radiobutton(RightWindow, text = "하행", value = 1, variable=UDTypeIntVar, command=ShowScheduleList)
+    Down.place(x=100, y=130)
 
     # 검색결과 리스트
     global MinuteList
@@ -403,9 +410,12 @@ def CreateScheduleWidget():
     HourIntVar = IntVar()
 
     x = y = 0
-    for Hour in HourList[DailyTypeIntVar.get()][UDIndex[UDTypeIntVar.get()]][UDTypeIntVar.get()]:
+    for Hour in HourList[ScheduleDailyTypeText[DailyTypeIntVar.get()]]  [UDTypeIntVar.get()]    [ScheduleUDTypeText[UDTypeIntVar.get()]]:
+        # 평일 or 토요일 일요일
+        # 0 or 1
+        # 상행 or 하행
         radio = Radiobutton(RightWindow, text=Hour, value=y*3 + x, variable=HourIntVar, command=ShowScheduleList)
-        radio.place(x = 15 + x*20, y=180 + y*20)
+        radio.place(x = 15 + x*50, y=200 + y*40)
         x+=1
         if x%3 == 0:
             y+=1
