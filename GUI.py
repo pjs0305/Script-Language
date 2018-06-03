@@ -126,7 +126,7 @@ def CreateWindow(): # 윈도우 설정
 
     ListBook.add(ListFrame, text = "검색결과")
     ListBook.add(BookMarkFrame, text = "즐겨찾기")
-    ListBook.place(x=15, y=80)
+    ListBook.place(x=10, y=80)
 
     # 글자
     SearchText = Label(LeftWindow, font=Subfont, text="지하철역 정보")
@@ -276,7 +276,7 @@ def ShowBus(): # 버스 조회 GUI
     scrollbar = Scrollbar(ListFrame)
     scrollbar.pack(side="right", fill="y")
 
-    BusNoList = Listbox(ListFrame, width= 20, height=20, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
+    BusNoList = Listbox(ListFrame, width= 20, height=16, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
     BusNoList.pack()
 
     scrollbar.config(command=BusNoList.yview)
@@ -297,6 +297,9 @@ def ShowBus(): # 버스 조회 GUI
 
     # 보여주기
     ShowBusList()
+
+    EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBusInf)
+    EmailButton.place(x=100, y=445)
 
 def ShowBusList(): # 버스 리스트박스에 출력
     BusNoList.config(state='normal') # 리스트박스 일반 상태로
@@ -326,6 +329,8 @@ def ShowBusList(): # 버스 리스트박스에 출력
     ResultText = Label(TextFrame, text=TEXT, font=font10)
     ResultText.pack()
 
+def MailBusInf():
+    a = 0
 
 
 def ShowBuilding():
@@ -355,7 +360,7 @@ def ShowBuilding():
     scrollbar = Scrollbar(ListFrame)
     scrollbar.pack(side="right", fill="y")
 
-    BuildingList = Listbox(ListFrame, width= 43, height=13, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
+    BuildingList = Listbox(ListFrame, width= 43, height=10, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
     BuildingList.pack()
 
     scrollbar.config(command=BuildingList.yview)
@@ -376,6 +381,9 @@ def ShowBuilding():
 
     # 보여주기
     ShowBuildingList()
+
+    EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBuilInf)
+    EmailButton.place(x = 100, y = 445)
 
 def ShowBuildingList():
     BuildingList.config(state='normal')
@@ -405,6 +413,9 @@ def ShowBuildingList():
     ResultText = Label(TextFrame, text=TEXT, font=font10)
     ResultText.pack()
 
+def MailBuilInf():
+    a = 0
+
 
 def ShowSchedule():
     SetRight()
@@ -433,7 +444,7 @@ def ShowHourList():
     if ButtonFrame:
         ButtonFrame.destroy()
 
-    ButtonFrame = Frame(RightWindow, width=170, height=270)
+    ButtonFrame = Frame(RightWindow, width=200, height=200)
     ButtonFrame.place(x=15, y=200)
 
     global HourIntVar
@@ -445,10 +456,10 @@ def ShowHourList():
         # 평일 or 토요일 일요일
         # 0 or 1
         # 상행 or 하행
-        radio = Radiobutton(ButtonFrame, text=Hour, value=y*3 + x, variable=HourIntVar, command=ShowScheduleList)
+        radio = Radiobutton(ButtonFrame, text=Hour, value=y*4 + x, variable=HourIntVar, command=ShowScheduleList)
         radio.place(x = x*50, y = y*40)
         x += 1
-        if x % 3 == 0:
+        if x % 4 == 0:
             y += 1
             x=0
     
@@ -499,10 +510,10 @@ def CreateScheduleWidget():
 
     # 그 외 글자들
     Text1 = Label(RightWindow, text="시간", font=Subfont)
-    Text1.place(x=15, y=160)
+    Text1.place(x=15, y=170)
 
     Text2 = Label(RightWindow, text="분", font=Subfont)
-    Text2.place(x=200, y=160)
+    Text2.place(x=250, y=170)
 
     # 시간표 검색타입 버튼
     global DailyTypeIntVar, UDTypeIntVar
@@ -526,18 +537,23 @@ def CreateScheduleWidget():
     # 검색결과 리스트
     global MinuteList
     ListFrame = Frame(RightWindow)
-    ListFrame.place(x = 200, y = 200)
+    ListFrame.place(x = 250, y = 200)
 
     scrollbar = Scrollbar(ListFrame)
     scrollbar.pack(side="right", fill="y")
 
-    MinuteList = Listbox(ListFrame, width= 20, height=16, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
+    MinuteList = Listbox(ListFrame, width= 10, height=12, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
     MinuteList.pack()
 
     scrollbar.config(command=MinuteList.yview)
 
     ShowHourList()
 
+    EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailSchedInf)
+    EmailButton.place(x=100, y=445)
+
+def MailSchedInf():
+    a = 0
 
 def SelectStation():
     global ListBook

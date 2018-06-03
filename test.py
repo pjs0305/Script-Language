@@ -1,29 +1,13 @@
-from tkinter import ttk
-import tkinter as tk
-from tkinter.scrolledtext import ScrolledText
+from tkinter import *
 
+root = Tk()
 
-def demo():
-    root = tk.Tk()
-    root.title("ttk.Notebook")
+def new_winF(): # new window definition
+    newwin = Toplevel(root)
+    display = Label(newwin, text="Humm, see a new window !")
+    display.pack()
 
-    nb = ttk.Notebook(root)
+button1 =Button(root, text ="open new window", command =new_winF) #command linked
+button1.pack()
 
-    # adding Frames as pages for the ttk.Notebook
-    # first page, which would get widgets gridded into it
-    page1 = ttk.Frame(nb)
-
-    # second page
-    page2 = ttk.Frame(nb)
-    text = ScrolledText(page2)
-    text.pack(expand=1, fill="both")
-
-    nb.add(page1, text='One')
-    nb.add(page2, text='Two')
-
-    nb.pack(expand=1, fill="both")
-
-    root.mainloop()
-
-if __name__ == "__main__":
-    demo()
+root.mainloop()
