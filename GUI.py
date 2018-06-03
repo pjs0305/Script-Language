@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import font
 from XML import *
 
@@ -17,6 +18,7 @@ Titlefont = font.Font(size=20, weight='bold', family='굴림')
 Mainfont = font.Font(size=16, weight='bold', family='굴림')
 Subfont = font.Font(size=13, family='굴림')
 Listfont = font.Font(size=12, family='굴림')
+font10 = font.Font(size=10, family='굴림')
 
 # 지하철역 저장 변수
 stationList = {} # 검색된 지하철역 ( ID : 이름 )
@@ -73,45 +75,67 @@ def CreateWindow(): # 윈도우 설정
 
     # 검색 박스
     global InputStation
-    InputStation = Entry(LeftWindow, width=20, borderwidth=3)
+    InputStation = Entry(LeftWindow, width=20, borderwidth=3, exportselection=True)
     InputStation.place(x=160, y=50)
 
     # 검색 버튼
     SearchButton = Button(LeftWindow, text="검색", command=SearchStation)
     SearchButton.place(x=330, y=47.5)
 
-    # 검색결과 리스트
-    ListFrame = Frame(LeftWindow)
+    # 리스트박스
+    ListBook = ttk.Notebook(LeftWindow)
+    ListBook.pack(fill = 'both', expand = 1)
+
+    # 검색결과 리스트박스
+    ListFrame = Frame(ListBook)
 
     scrollbar = Scrollbar(ListFrame)
     scrollbar.pack(side="right", fill="y")
 
     global StationListBox
-    StationListBox = Listbox(ListFrame, width=43, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=scrollbar.set)
+    StationListBox = Listbox(ListFrame, width=43, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=scrollbar.set, exportselection=True)
     StationListBox.pack()
     scrollbar.config(command=StationListBox.yview)
-    ListFrame.place(x=15, y=90)
+
+    # 즐겨찾기 리스트박스
+    BookMarkFrame = Frame(ListBook)
+
+    rscrollbar = Scrollbar(BookMarkFrame)
+    rscrollbar.pack(side="right", fill="y")
+
+    global BookMarkList
+    BookMarkList = Listbox(BookMarkFrame, width=43, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=rscrollbar.set, exportselection=True)
+    BookMarkList.pack()
+    rscrollbar.config(command=BookMarkList.yview)
+
+    ListBook.add(ListFrame, text = "검색결과")
+    ListBook.add(BookMarkFrame, text = "즐겨찾기")
+    ListBook.place(x=15, y=80)
 
     # 글자
     SearchText = Label(LeftWindow, font=Subfont, text="지하철역 정보")
-    SearchText.place(x=145, y=280)
+    SearchText.place(x=145, y=290)
 
     # 버튼
     global BusButton
     BusButton = Button(LeftWindow, font=Listfont, text="출구별 주변 버스 조회", command=ShowBus, state="disabled")
-    BusButton.place(x=115, y=320)
+    BusButton.place(x=115, y=330)
 
     global BuildingButton
     BuildingButton = Button(LeftWindow, font=Listfont, text="출구별 주변 건물 조회", command=ShowBuilding, state="disabled")
-    BuildingButton.place(x=115, y=380)
+    BuildingButton.place(x=115, y=390)
 
     global ScheduleButton
     ScheduleButton = Button(LeftWindow, font=Listfont, text="시간표 조회", command=ShowSchedule, state="disabled")
-    ScheduleButton.place(x=150, y=440)
+    ScheduleButton.place(x=150, y=450)
 
     global OpenButton
     OpenButton = Checkbutton(LeftWindow, text="정보 보기", command=OpenCloseRight)
-    OpenButton.place(x=300, y=280)
+    OpenButton.place(x=300, y=290)
+
+def ButtonStateSet():
+    global BusButton, BuildingButton, ScheduleButton
+
 
 def SetRight(): # 오른쪽 창 설정
     global RightWindow
@@ -407,7 +431,7 @@ def ShowScheduleList():
     else:
         TEXT += "-" + "시간 없음"
 
-    ResultText = Label(TextFrame, text=TEXT, font=Listfont)
+    ResultText = Label(TextFrame, text=TEXT, font=font10)
     ResultText.pack()
 
 def CreateScheduleWidget():
