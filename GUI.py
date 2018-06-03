@@ -230,6 +230,9 @@ def OpenRightWindow():
 def SearchStation():
     SetRight()
 
+    global ListBook
+    ListBook.select(0)
+
     StationListBox.delete(0, END) # 검색된 리스트박스 초기화
 
     global stationList, stationListId
@@ -248,22 +251,15 @@ def ShowBus(): # 버스 조회 GUI
     SetRight()
     OpenRightWindow()
 
-    # 현재 선택된 지하철역으로 춣구별 주변 버스 찾기
-    global ListBook
+    # 현재 선택된 지하철역으로 출구별 주변 버스 찾기
 
     global SearchBus, SearchExitNo
-    if ListBook.index(ListBook.select()) == 0: # 검색결과창
-        select = StationListBox.curselection()
 
-        SearchBus = FindBus(stationListId[select[0]])
-        SearchExitNo = ExtractDictKey(SearchBus)
+    global StationName, StationId
+    StationName, StationId = SelectStation()
 
-    # 선택된 지하철역 글자
-    TEXT = stationList[stationListId[select[0]]]
-    if TEXT[len(TEXT)-1:len(TEXT)] != "역":
-        TEXT += "역"
-    StationText = Label(RightWindow, text=TEXT, font=Subfont)
-    StationText.place(x = 15 , y=50)
+    SearchBus = FindBus(StationId)
+    SearchExitNo = ExtractDictKey(SearchBus)
 
     # 그 외 글자들
     Text1 = Label(RightWindow, text="버스번호 리스트", font=Subfont)
@@ -313,26 +309,36 @@ def ShowBusList(): # 버스 리스트박스에 출력
 
     BusNoList.config(state='disabled') # 리스트박스 읽기 상태로
 
+    global TextFrame
+    # 결과 텍스트
+    if TextFrame:
+        TextFrame.destroy()
+
+    TextFrame = Frame(RightWindow)
+    TextFrame.place(x=15, y=50)
+
+    TEXT = StationName
+    if TEXT[len(TEXT) - 1:len(TEXT)] != "역":
+        TEXT += "역"
+
+    TEXT += " " + str(SearchExitNo[ExitNoVar.get()]) + "번 출구"
+
+    ResultText = Label(TextFrame, text=TEXT, font=font10)
+    ResultText.pack()
+
+
 
 def ShowBuilding():
     SetRight()
     OpenRightWindow()
 
-    # 현재 선택된 지하철역
-    select = StationListBox.curselection()
-
-    # 지하철역 주변 버스, 출구 파싱
     global SearchBuilding, SearchExitNo
-    SearchBuilding = FindBuilding(stationListId[select[0]])
+
+    global StationName, StationId
+    StationName, StationId = SelectStation()
+
+    SearchBuilding = FindBuilding(StationId)
     SearchExitNo = ExtractDictKey(SearchBuilding)
-
-    # 선택된 지하철역 글자
-    TEXT = stationList[stationListId[select[0]]]
-    if TEXT[len(TEXT)-1:len(TEXT)] != "역":
-        TEXT += "역"
-
-    StationText = Label(RightWindow, text=TEXT, font=Subfont)
-    StationText.place(x = 15 , y=50)
 
     # 그 외 글자
     Text1 = Label(RightWindow, text="건물이름 리스트", font=Subfont)
@@ -382,20 +388,36 @@ def ShowBuildingList():
 
     BuildingList.config(state='disabled')
 
+    global TextFrame
+    # 결과 텍스트
+    if TextFrame:
+        TextFrame.destroy()
+
+    TextFrame = Frame(RightWindow)
+    TextFrame.place(x=15, y=50)
+
+    TEXT = StationName
+    if TEXT[len(TEXT) - 1:len(TEXT)] != "역":
+        TEXT += "역"
+
+    TEXT += " " + str(SearchExitNo[ExitNoVar.get()]) + "번 출구"
+
+    ResultText = Label(TextFrame, text=TEXT, font=font10)
+    ResultText.pack()
+
 
 def ShowSchedule():
     SetRight()
     OpenRightWindow()
-    
-    # 모든 시간표 파싱
+
     global StationSchedule
 
-    # 현재 선택된 지하철역
-    select = StationListBox.curselection()
+    global StationName, StationId
+    StationName, StationId = SelectStation()
 
     for Dtype in ["평일", "토요일", "일요일"]:
         for UDtype in ["상행", "하행"]:
-            StationSchedule[Dtype][UDIndex[UDtype]][UDtype] = FindSchedule(stationListId[select[0]], ScheduleText[Dtype], ScheduleText[UDtype])
+            StationSchedule[Dtype][UDIndex[UDtype]][UDtype] = FindSchedule(StationId, ScheduleText[Dtype], ScheduleText[UDtype])
 
     for Dtype in ["평일", "토요일", "일요일"]:
         for UDtype in ["상행", "하행"]:
@@ -457,12 +479,10 @@ def ShowScheduleList():
     TextFrame = Frame(RightWindow)
     TextFrame.place(x=15, y=50)
 
-    select = StationListBox.curselection()
-
-    TEXT = stationList[stationListId[select[0]]]
+    TEXT = StationName
     if TEXT[len(TEXT) - 1:len(TEXT)] != "역":
         TEXT += "역"
-    TEXT += " " + "[" + FindStationLine(stationListId[select[0]]) + "]"
+    TEXT += " " + "[" + FindStationLine(StationId) + "]"
 
 
     TEXT += "-" + ScheduleDailyTypeText[DailyTypeIntVar.get()] + "-" + ScheduleUDTypeText[UDTypeIntVar.get()]
@@ -517,6 +537,22 @@ def CreateScheduleWidget():
     scrollbar.config(command=MinuteList.yview)
 
     ShowHourList()
+
+
+def SelectStation():
+    global ListBook
+    global StationListBox, BookMarkListBox
+
+    if ListBook.index(ListBook.select()) == 0: # 검색결과창
+        select = StationListBox.curselection()
+        StationId = stationListId[select[0]]
+        StationName = stationList[StationId]
+    else:
+        select = BookMarkListBox.curselection()
+        StationId = BookMarkListId[select[0]]
+        StationName = BookMarkList[StationId]
+
+    return StationName, StationId
 
 # 함수 호출
 CreateWindow()
