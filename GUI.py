@@ -159,7 +159,7 @@ def AddBookMark():
 
     # 선택된 지하철역 ID와 이름
     StationId = stationListId[select[0]]
-    StationName = stationList[stationListId[select[0]]]
+    StationName = stationList[StationId]
     
     prevSize = len(BookMarkList)
     BookMarkList[StationId] = StationName
@@ -174,14 +174,19 @@ def AddBookMark():
     print(BookMarkList)
 
 def SubBookMark():
-    global BookMarkList
+    global BookMarkListBox
     global BookMarkList, BookMarkListId
 
-    select = StationListBox.curselection()
+    select = BookMarkListBox.curselection()
 
-    SearchBus = FindBus(stationListId[select[0]])
-    SearchExitNo = ExtractDictKey(SearchBus)
+    removeStationId = BookMarkListId[select[0]]
 
+    BookMarkList.pop(removeStationId)
+    BookMarkListId.remove(removeStationId)
+
+    BookMarkListBox.delete(select[0])
+
+    print(BookMarkList)
 
 def SetRight(): # 오른쪽 창 설정
     global RightWindow
