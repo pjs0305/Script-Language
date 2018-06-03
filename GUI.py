@@ -20,9 +20,13 @@ Subfont = font.Font(size=13, family='굴림')
 Listfont = font.Font(size=12, family='굴림')
 font10 = font.Font(size=10, family='굴림')
 
-# 지하철역 저장 변수
+# 검색결과 지하철역 저장
 stationList = {} # 검색된 지하철역 ( ID : 이름 )
 stationListId = [] # 검색된 지하철역 ID 리스트
+
+# 즐겨찾기 지하철역 저장
+BookMarkList = {} # 즐겨찾는 지하철역 ( ID : 이름 )
+BookMarkListId = [] # 즐겨찾는 지하철역 ID 리스트
 
 # 버스 검색 관련
 SearchBus = {} # 검색된 지하철역 주변 버스 ( ExitNo : BusNo )
@@ -82,7 +86,10 @@ def CreateWindow(): # 윈도우 설정
     SearchButton = Button(LeftWindow, text="검색", command=SearchStation)
     SearchButton.place(x=330, y=47.5)
 
+
+
     # 리스트박스
+    global ListBook
     ListBook = ttk.Notebook(LeftWindow)
     ListBook.pack(fill = 'both', expand = 1)
 
@@ -93,9 +100,13 @@ def CreateWindow(): # 윈도우 설정
     scrollbar.pack(side="right", fill="y")
 
     global StationListBox
-    StationListBox = Listbox(ListFrame, width=43, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=scrollbar.set, exportselection=True)
+    StationListBox = Listbox(ListFrame, width=43, height= 10, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=scrollbar.set, exportselection=True)
     StationListBox.pack()
     scrollbar.config(command=StationListBox.yview)
+
+    global AddBookButton
+    AddBookButton = Button(ListFrame, font=font10, text = "즐겨찾기에 추가하기", command=AddBookMark, width=44)
+    AddBookButton.pack(side="bottom", anchor="w")
 
     # 즐겨찾기 리스트박스
     BookMarkFrame = Frame(ListBook)
@@ -103,10 +114,15 @@ def CreateWindow(): # 윈도우 설정
     rscrollbar = Scrollbar(BookMarkFrame)
     rscrollbar.pack(side="right", fill="y")
 
-    global BookMarkList
-    BookMarkList = Listbox(BookMarkFrame, width=43, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=rscrollbar.set, exportselection=True)
-    BookMarkList.pack()
-    rscrollbar.config(command=BookMarkList.yview)
+    global BookMarkListBox
+    BookMarkListBox = Listbox(BookMarkFrame, width=43, height= 10, borderwidth=5, font=Listfont, activestyle="none", yscrollcommand=rscrollbar.set, exportselection=True)
+    BookMarkListBox.pack()
+    rscrollbar.config(command=BookMarkListBox.yview)
+
+    global SubBookButton
+
+    SubBookButton = Button(BookMarkFrame, font=font10, text = "즐겨찾기에서 삭제하기", command=SubBookMark, width=44)
+    SubBookButton.pack(side="bottom", anchor="w")
 
     ListBook.add(ListFrame, text = "검색결과")
     ListBook.add(BookMarkFrame, text = "즐겨찾기")
@@ -114,27 +130,57 @@ def CreateWindow(): # 윈도우 설정
 
     # 글자
     SearchText = Label(LeftWindow, font=Subfont, text="지하철역 정보")
-    SearchText.place(x=145, y=290)
+    SearchText.place(x=145, y=320)
 
     # 버튼
     global BusButton
-    BusButton = Button(LeftWindow, font=Listfont, text="출구별 주변 버스 조회", command=ShowBus, state="disabled")
-    BusButton.place(x=115, y=330)
+    BusButton = Button(LeftWindow, font=Listfont, text="출구별 주변 버스 조회", command=ShowBus)
+    BusButton.place(x=115, y=360)
 
     global BuildingButton
-    BuildingButton = Button(LeftWindow, font=Listfont, text="출구별 주변 건물 조회", command=ShowBuilding, state="disabled")
-    BuildingButton.place(x=115, y=390)
+    BuildingButton = Button(LeftWindow, font=Listfont, text="출구별 주변 건물 조회", command=ShowBuilding)
+    BuildingButton.place(x=115, y=405)
 
     global ScheduleButton
-    ScheduleButton = Button(LeftWindow, font=Listfont, text="시간표 조회", command=ShowSchedule, state="disabled")
-    ScheduleButton.place(x=150, y=450)
+    ScheduleButton = Button(LeftWindow, font=Listfont, text="시간표 조회", command=ShowSchedule)
+    ScheduleButton.place(x=150, y=455)
 
     global OpenButton
     OpenButton = Checkbutton(LeftWindow, text="정보 보기", command=OpenCloseRight)
-    OpenButton.place(x=300, y=290)
+    OpenButton.place(x=300, y=320)
 
-def ButtonStateSet():
-    global BusButton, BuildingButton, ScheduleButton
+def AddBookMark():
+    global StationListBox
+    global BookMarkListBox
+    global stationList, stationListId
+    global BookMarkList, BookMarkListId
+
+    select = StationListBox.curselection()
+
+    # 선택된 지하철역 ID와 이름
+    StationId = stationListId[select[0]]
+    StationName = stationList[stationListId[select[0]]]
+    
+    prevSize = len(BookMarkList)
+    BookMarkList[StationId] = StationName
+    NowSize = len(BookMarkList)
+
+    if prevSize != NowSize: # 즐겨찾기 추가에 성공했을 때
+        BookMarkListId.append(stationListId[select[0]])
+
+        str = StationName + " " + "[" + FindStationLine(StationId) + "]"
+        BookMarkListBox.insert(prevSize, str)
+
+    print(BookMarkList)
+
+def SubBookMark():
+    global BookMarkList
+    global BookMarkList, BookMarkListId
+
+    select = StationListBox.curselection()
+
+    SearchBus = FindBus(stationListId[select[0]])
+    SearchExitNo = ExtractDictKey(SearchBus)
 
 
 def SetRight(): # 오른쪽 창 설정
@@ -192,30 +238,20 @@ def SearchStation():
         StationListBox.insert(i, str)
         i+=1
 
-    # 검색 결과가 있을 경우 조회 버튼 활성화
-    # 없을 경우 비활성화
-    if StationListBox.size() > 0:
-        StationListBox.selection_set(0)
-
-        BusButton.configure(state = "active")
-        BuildingButton.configure(state = "active")
-        ScheduleButton.configure(state = "active")
-    else:
-        BusButton.configure(state = "disabled")
-        BuildingButton.configure(state = "disabled")
-        ScheduleButton.configure(state = "disabled")
-
 
 def ShowBus(): # 버스 조회 GUI
     SetRight()
     OpenRightWindow()
 
     # 현재 선택된 지하철역으로 춣구별 주변 버스 찾기
-    select = StationListBox.curselection()
+    global ListBook
 
     global SearchBus, SearchExitNo
-    SearchBus = FindBus(stationListId[select[0]])
-    SearchExitNo = ExtractDictKey(SearchBus)
+    if ListBook.index(ListBook.select()) == 0: # 검색결과창
+        select = StationListBox.curselection()
+
+        SearchBus = FindBus(stationListId[select[0]])
+        SearchExitNo = ExtractDictKey(SearchBus)
 
     # 선택된 지하철역 글자
     TEXT = stationList[stationListId[select[0]]]

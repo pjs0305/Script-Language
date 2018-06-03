@@ -17,7 +17,7 @@
       <file leaf-file-name="XML.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/XML.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
+            <state relative-caret-position="152">
               <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
             </state>
           </provider>
@@ -26,15 +26,15 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="94" column="25" lean-forward="true" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
+            <state relative-caret-position="173">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#1796#4417#0" />
                 <element signature="e#3562#3940#0" />
                 <element signature="e#3984#4302#0" />
                 <element signature="e#4331#4535#0" />
-                <element signature="e#4562#5429#0" />
-                <element signature="e#5463#6871#0" />
+                <element signature="e#6211#7681#0" />
                 <element signature="e#6911#7177#0" />
                 <element signature="e#7204#8662#0" />
                 <element signature="e#8692#8951#0" />
@@ -289,7 +289,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="39" />
+      <option name="time" value="40" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -593,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -610,17 +603,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/XML.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="94" column="25" lean-forward="true" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
+        <state relative-caret-position="173">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#1796#4417#0" />
             <element signature="e#3562#3940#0" />
             <element signature="e#3984#4302#0" />
             <element signature="e#4331#4535#0" />
-            <element signature="e#4562#5429#0" />
-            <element signature="e#5463#6871#0" />
+            <element signature="e#6211#7681#0" />
             <element signature="e#6911#7177#0" />
             <element signature="e#7204#8662#0" />
             <element signature="e#8692#8951#0" />
