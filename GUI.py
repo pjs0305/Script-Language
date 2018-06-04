@@ -261,45 +261,50 @@ def ShowBus(): # 버스 조회 GUI
     SearchBus = FindBus(StationId)
     SearchExitNo = ExtractDictKey(SearchBus)
 
-    # 그 외 글자들
-    Text1 = Label(RightWindow, text="버스번호 리스트", font=Subfont)
-    Text1.place(x=180, y=90)
+    if len(SearchBus) != 0:
+        # 그 외 글자들
+        Text1 = Label(RightWindow, text="버스번호 리스트", font=Subfont)
+        Text1.place(x=180, y=90)
 
-    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
-    Text2.place(x=15, y=90)
+        Text2 = Label(RightWindow, text="출구번호", font=Subfont)
+        Text2.place(x=15, y=90)
 
-    # 검색결과 리스트
-    global BusNoList
+        # 검색결과 리스트
+        global BusNoList
 
-    ListFrame = Frame(RightWindow)
+        ListFrame = Frame(RightWindow)
 
-    scrollbar = Scrollbar(ListFrame)
-    scrollbar.pack(side="right", fill="y")
+        scrollbar = Scrollbar(ListFrame)
+        scrollbar.pack(side="right", fill="y")
 
-    BusNoList = Listbox(ListFrame, width= 20, height=16, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
-    BusNoList.pack()
+        BusNoList = Listbox(ListFrame, width= 20, height=16, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
+        BusNoList.pack()
 
-    scrollbar.config(command=BusNoList.yview)
-    ListFrame.place(x = 180, y = 120)
+        scrollbar.config(command=BusNoList.yview)
+        ListFrame.place(x = 180, y = 120)
 
-    # 출구 번호 버튼들
-    global ExitNoVar
-    ExitNoVar = IntVar()
+        # 출구 번호 버튼들
+        global ExitNoVar
+        ExitNoVar = IntVar()
 
-    x = y = 0
-    for Exit in SearchExitNo:
-        radio1 = Radiobutton(RightWindow, text=Exit, value=y*2 + x, variable=ExitNoVar, command=ShowBusList)
-        radio1.place(x= 15 + x*60, y=120 + y*30)
-        x+=1
-        if x%2 == 0:
-            y+=1
-            x=0
+        x = y = 0
+        for Exit in SearchExitNo:
+            radio1 = Radiobutton(RightWindow, text=Exit, value=y*2 + x, variable=ExitNoVar, command=ShowBusList)
+            radio1.place(x= 15 + x*60, y=120 + y*30)
+            x+=1
+            if x%2 == 0:
+                y+=1
+                x=0
 
-    # 보여주기
-    ShowBusList()
+        # 보여주기
+        ShowBusList()
 
-    EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBusInf)
-    EmailButton.place(x=100, y=445)
+        EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBusInf)
+        EmailButton.place(x=80, y=445)
+    else:
+        Text1 = Label(RightWindow, text="조회 결과가 없음", font=Subfont)
+        Text1.place(x=130, y=150)
+
 
 def ShowBusList(): # 버스 리스트박스에 출력
     BusNoList.config(state='normal') # 리스트박스 일반 상태로
@@ -330,6 +335,9 @@ def ShowBusList(): # 버스 리스트박스에 출력
     ResultText.pack()
 
 def MailBusInf():
+    CreateSendMailWindow(SendSchedInf, "출구별 주변 버스 정보")
+
+def SendBusInf():
     a = 0
 
 
@@ -345,45 +353,49 @@ def ShowBuilding():
     SearchBuilding = FindBuilding(StationId)
     SearchExitNo = ExtractDictKey(SearchBuilding)
 
-    # 그 외 글자
-    Text1 = Label(RightWindow, text="건물이름 리스트", font=Subfont)
-    Text1.place(x=15, y=220)
+    if len(SearchBuilding) != 0:
+        # 그 외 글자
+        Text1 = Label(RightWindow, text="건물이름 리스트", font=Subfont)
+        Text1.place(x=15, y=220)
 
-    Text2 = Label(RightWindow, text="출구번호", font=Subfont)
-    Text2.place(x=15, y=90)
+        Text2 = Label(RightWindow, text="출구번호", font=Subfont)
+        Text2.place(x=15, y=90)
 
-    # 검색결과 리스트
-    global BuildingList
+        # 검색결과 리스트
+        global BuildingList
 
-    ListFrame = Frame(RightWindow)
+        ListFrame = Frame(RightWindow)
 
-    scrollbar = Scrollbar(ListFrame)
-    scrollbar.pack(side="right", fill="y")
+        scrollbar = Scrollbar(ListFrame)
+        scrollbar.pack(side="right", fill="y")
 
-    BuildingList = Listbox(ListFrame, width= 43, height=10, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
-    BuildingList.pack()
+        BuildingList = Listbox(ListFrame, width= 43, height=10, borderwidth=5, font = Listfont, yscrollcommand = scrollbar.set)
+        BuildingList.pack()
 
-    scrollbar.config(command=BuildingList.yview)
-    ListFrame.place(x = 15, y = 250)
+        scrollbar.config(command=BuildingList.yview)
+        ListFrame.place(x = 15, y = 250)
 
-    # 출구 번호 버튼들
-    global ExitNoVar
-    ExitNoVar = IntVar()
+        # 출구 번호 버튼들
+        global ExitNoVar
+        ExitNoVar = IntVar()
 
-    x = y = 0
-    for Exit in SearchExitNo:
-        radio1 = Radiobutton(RightWindow, text=Exit, value=y*7 + x, variable=ExitNoVar, command=ShowBuildingList)
-        radio1.place(x= 15 + x*50, y=120 + y*30)
-        x+=1
-        if x%7 == 0:
-            y+=1
-            x=0
+        x = y = 0
+        for Exit in SearchExitNo:
+            radio1 = Radiobutton(RightWindow, text=Exit, value=y*7 + x, variable=ExitNoVar, command=ShowBuildingList)
+            radio1.place(x= 15 + x*50, y=120 + y*30)
+            x+=1
+            if x%7 == 0:
+                y+=1
+                x=0
 
-    # 보여주기
-    ShowBuildingList()
+        # 보여주기
+        ShowBuildingList()
 
-    EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBuilInf)
-    EmailButton.place(x = 100, y = 445)
+        EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBuilInf)
+        EmailButton.place(x = 100, y = 445)
+    else:
+        Text1 = Label(RightWindow, text="조회 결과가 없음", font=Subfont)
+        Text1.place(x=130, y=150)
 
 def ShowBuildingList():
     BuildingList.config(state='normal')
@@ -414,6 +426,9 @@ def ShowBuildingList():
     ResultText.pack()
 
 def MailBuilInf():
+    CreateSendMailWindow(SendSchedInf, "출구별 주변 건물 정보")
+
+def SendBuilInf():
     a = 0
 
 
@@ -553,6 +568,9 @@ def CreateScheduleWidget():
     EmailButton.place(x=100, y=445)
 
 def MailSchedInf():
+    CreateSendMailWindow(SendSchedInf, "시간표 정보")
+
+def SendSchedInf():
     a = 0
 
 def SelectStation():
@@ -569,6 +587,30 @@ def SelectStation():
         StationName = BookMarkList[StationId]
 
     return StationName, StationId
+
+def CreateSendMailWindow(func, title):
+    global StationName, StationId
+
+    MailWin = Toplevel(MainWindow, width=350, height=200)
+    MailWin.resizable(False, False)
+    MailWin.title("메일 보내기")
+
+    text1 = Label(MailWin, font=Listfont, text=title)
+    text1.pack(anchor="center")
+    text1.place(y= 10)
+
+    station = StationName + FindStationLine(StationId)
+
+    text2 = Label(MailWin, font=Listfont, text=station)
+    text2.pack(anchor="center")
+    text2.place(y=50)
+
+
+    input = Entry(MailWin)
+    input.place(x=100, y = 120)
+
+    text3 = Label(MailWin, text="보낼 메일 주소")
+    text3.place(x= 10, y= 118)
 
 # 함수 호출
 CreateWindow()
