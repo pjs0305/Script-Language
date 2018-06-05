@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import font
 from XML import *
+from MAIL import *
 
 # 윈도우창
 MainWindow = Tk()
@@ -338,7 +339,9 @@ def MailBusInf():
     CreateSendMailWindow(SendSchedInf, "출구별 주변 버스 정보")
 
 def SendBusInf():
-    a = 0
+    # 메일 주소 받아옴
+    text = StationName + " 출구변 주변 버스 정보"
+    SendData(MailInput.get(), text, MakeHTMLBusInf(SearchBus))
 
 
 def ShowBuilding():
@@ -429,7 +432,8 @@ def MailBuilInf():
     CreateSendMailWindow(SendSchedInf, "출구별 주변 건물 정보")
 
 def SendBuilInf():
-    a = 0
+    # 메일 주소 받아옴
+    MailInput.get()
 
 
 def ShowSchedule():
@@ -571,7 +575,8 @@ def MailSchedInf():
     CreateSendMailWindow(SendSchedInf, "시간표 정보")
 
 def SendSchedInf():
-    a = 0
+    # 메일 주소 받아옴
+    MailInput.get()
 
 def SelectStation():
     global ListBook
@@ -588,7 +593,7 @@ def SelectStation():
 
     return StationName, StationId
 
-def CreateSendMailWindow(func, title):
+def CreateSendMailWindow(SendFunc, title):
     global StationName, StationId
 
     MailWin = Toplevel(MainWindow, width=350, height=200)
@@ -596,21 +601,26 @@ def CreateSendMailWindow(func, title):
     MailWin.title("메일 보내기")
 
     text1 = Label(MailWin, font=Listfont, text=title)
-    text1.pack(anchor="center")
-    text1.place(y= 10)
+    text1.pack(side="top", anchor="center")
+    #text1.place(y= 10)
 
-    station = StationName + FindStationLine(StationId)
+    station = StationName + " " + FindStationLine(StationId)
 
     text2 = Label(MailWin, font=Listfont, text=station)
-    text2.pack(anchor="center")
-    text2.place(y=50)
+    text2.pack(side="top", anchor="center")
+    #text2.place(y=50)
 
-
-    input = Entry(MailWin)
-    input.place(x=100, y = 120)
+    global MailInput
+    MailInput = Entry(MailWin)
+    MailInput.pack(anchor="center")
+    #input.place(x=100, y = 120)
 
     text3 = Label(MailWin, text="보낼 메일 주소")
-    text3.place(x= 10, y= 118)
+    text3.pack(anchor="center")
+    #text3.place(x= 10, y= 118)
+
+    button = Button(MailWin, text="메일 보내기", command=SendFunc)
+    button.pack(anchor="center")
 
 # 함수 호출
 CreateWindow()
