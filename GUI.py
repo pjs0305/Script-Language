@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
+from tkinter import messagebox
 from XML import *
 from MAIL import *
 
@@ -306,7 +307,6 @@ def ShowBus(): # 버스 조회 GUI
         Text1 = Label(RightWindow, text="조회 결과가 없음", font=Subfont)
         Text1.place(x=130, y=150)
 
-
 def ShowBusList(): # 버스 리스트박스에 출력
     BusNoList.config(state='normal') # 리스트박스 일반 상태로
     BusNoList.delete(0, END)  # 검색된 리스트 초기화
@@ -336,12 +336,13 @@ def ShowBusList(): # 버스 리스트박스에 출력
     ResultText.pack()
 
 def MailBusInf():
-    CreateSendMailWindow(SendSchedInf, "출구별 주변 버스 정보")
+    CreateSendMailWindow(SendBusInf, "출구별 주변 버스 정보")
 
 def SendBusInf():
     # 메일 주소 받아옴
-    text = StationName + " 출구변 주변 버스 정보"
-    SendData(MailInput.get(), text, MakeHTMLBusInf(SearchBus))
+    text = StationName + " 출구별 주변 버스 목록"
+    SendData(MailInput.get(), text, MakeBodyBus, SearchBus)
+    messagebox.showinfo("알림", "메일을 전송하였습니다.")
 
 
 def ShowBuilding():
@@ -429,11 +430,13 @@ def ShowBuildingList():
     ResultText.pack()
 
 def MailBuilInf():
-    CreateSendMailWindow(SendSchedInf, "출구별 주변 건물 정보")
+    CreateSendMailWindow(SendBuilInf, "출구별 주변 건물 정보")
 
 def SendBuilInf():
     # 메일 주소 받아옴
-    MailInput.get()
+    text = StationName + " 출구별 주변 건물 목록"
+    SendData(MailInput.get(), text, MakeBodyBuild, SearchBuilding)
+    messagebox.showinfo("알림", "메일을 전송하였습니다.")
 
 
 def ShowSchedule():
@@ -576,7 +579,10 @@ def MailSchedInf():
 
 def SendSchedInf():
     # 메일 주소 받아옴
-    MailInput.get()
+    text = StationName + " " + FindStationLine(StationId) + " 시간표"
+    SendData(MailInput.get(), text, MakeBodySched, StationSchedule)
+    messagebox.showinfo("알림", "메일을 전송하였습니다.")
+
 
 def SelectStation():
     global ListBook

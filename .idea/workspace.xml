@@ -265,7 +265,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/xmlbook.py</url>
+          <url />
           <line>40</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
