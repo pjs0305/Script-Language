@@ -5,8 +5,8 @@ import urllib.request
 
 client_key = "serviceKey=QCt6OJN%2BX%2BK%2F1QWhl3xAV6wrYByNl7oLDFyYobuvd%2FXsKryONWzAm0FH9zbTDU0syJHEkFxCHE31CKqoCcUIKg%3D%3D"
 keymenu = ["subwayStationName", "subwayStationId", "dailyTypeCode", "upDownTypeCode"]
-DayList = { "01" : "평일", "02" : "토요일", "03" : "일요일" }
-UpDown = { "U" : "상행", "D" : "하행" }
+DayList = { "평일" : "01", "토요일" : "02", "일요일" : "03" }
+UpDown = { "상행" : "U", "하행" : "D" }
 
 def LoadXML(search, key, **data):
     s = "http://openapi.tago.go.kr/openapi/service/SubwayInfoService/" + search + "?" + key + "&"
