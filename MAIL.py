@@ -1,5 +1,5 @@
 import mimetypes
-import mysmtplib
+import smtplib
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -171,7 +171,7 @@ def SendData(mail, title, MakeBody, DataList):
     msg.attach(DataPart)
 
     # 메일을 발송한다.
-    s = mysmtplib.MySMTP(host,port)
+    s = smtplib.SMTP(host,port)
     #s.set_debuglevel(1)        # 디버깅이 필요할 경우 주석을 푼다.
     s.ehlo()
     s.starttls()
