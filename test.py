@@ -1,8 +1,14 @@
+import tkinter
+import tkinter.ttk
 
-def a():
-    print("ㅇㅇ")
+window=tkinter.Tk()
+window.title("YUN DAE HEE")
+window.geometry("640x400+100+100")
+window.resizable(False, False)
 
-def b(f):
-    f()
+progressbar=tkinter.ttk.Progressbar(window, maximum=100, mode="indeterminate")
+progressbar.pack()
 
-b(a)
+progressbar.start(50)
+
+window.mainloop()

@@ -13,7 +13,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MAIL.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MAIL.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XML.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/XML.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#5334#5814#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="circle.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/circle.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,11 +93,11 @@
         <option value="$PROJECT_DIR$/loadAPI.py" />
         <option value="$PROJECT_DIR$/loadXML.py" />
         <option value="$PROJECT_DIR$/read.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/GUI.py" />
         <option value="$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/3부/25장/noti.py" />
-        <option value="$PROJECT_DIR$/XML.py" />
         <option value="$PROJECT_DIR$/TELEGRAM.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/XML.py" />
       </list>
     </option>
   </component>
@@ -57,7 +112,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -67,21 +121,38 @@
             </path>
             <path>
               <item name="Script Language" type="b2602c69:ProjectViewProjectNode" />
-              <item name="17장" type="462c0819:PsiDirectoryNode" />
+              <item name="9장" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Script Language" type="b2602c69:ProjectViewProjectNode" />
-              <item name="25장" type="462c0819:PsiDirectoryNode" />
+              <item name="9장" type="462c0819:PsiDirectoryNode" />
+              <item name="circle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Script Language" type="b2602c69:ProjectViewProjectNode" />
+              <item name="9장" type="462c0819:PsiDirectoryNode" />
+              <item name="circle_prototype" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Script Language" type="b2602c69:ProjectViewProjectNode" />
+              <item name="9장" type="462c0819:PsiDirectoryNode" />
+              <item name="spam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Script Language" type="b2602c69:ProjectViewProjectNode" />
+              <item name="9장" type="462c0819:PsiDirectoryNode" />
+              <item name="spam2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/스크립트 언어/빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/3부/25장/noti.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/3부/25장" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -95,7 +166,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TELEGRAM">
+  <component name="RunManager" selected="Python.setup">
     <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Script Language" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,6 +198,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TELEGRAM.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="setup" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="9장" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\Python\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/setup.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,38 +257,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Script Language" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="E:\Python\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\스크립트 언어\Script Language\XML.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list>
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.GUI" />
       <item itemvalue="Python.test (1)" />
       <item itemvalue="Python.TELEGRAM" />
       <item itemvalue="Python.teller" />
+      <item itemvalue="Python.setup" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.setup" />
+        <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.TELEGRAM" />
         <item itemvalue="Python.teller" />
         <item itemvalue="Python.GUI" />
-        <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -219,23 +290,23 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1421875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1421875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27872342" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947917" weight="0.3287234" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27872342" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39893618" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -254,35 +325,30 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/book.xml">
+    <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/circle.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Python/Lib/xml/dom/minidom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15979">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/launcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/XML.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="171">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#5334#5814#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/internetbook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -290,20 +356,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Python/Lib/urllib/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14934">
-          <caret line="788" selection-start-line="788" selection-end-line="788" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Python/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6118">
-          <caret line="322" selection-start-line="322" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/urllib/parse.py" />
+    <entry file="file://E:/Python/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/xmlbook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -318,13 +372,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Python/Lib/xml/dom/minidom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15979">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/xml/dom/minidom.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/launcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -347,20 +395,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Python/Lib/urllib/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14972">
-          <caret line="788" selection-start-line="788" selection-end-line="788" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Python/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6118">
-          <caret line="322" selection-start-line="322" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/urllib/parse.py" />
+    <entry file="file://E:/Python/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/xmlbook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -375,13 +411,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Python/Lib/xml/dom/minidom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16074">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/xml/dom/minidom.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/launcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -404,20 +434,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Python/Lib/urllib/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14972">
-          <caret line="788" selection-start-line="788" selection-end-line="788" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Python/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6118">
-          <caret line="322" selection-start-line="322" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/urllib/parse.py" />
+    <entry file="file://E:/Python/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/xmlbook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -432,13 +450,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Python/Lib/xml/dom/minidom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16074">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/xml/dom/minidom.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/launcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -469,27 +481,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/loadXML.py" />
-    <entry file="file://E:/Python/Lib/urllib/parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14934">
-          <caret line="788" selection-start-line="788" selection-end-line="788" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Python/Lib/xml/dom/minidom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15979">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Python/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6118">
-          <caret line="322" selection-start-line="322" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Python/Lib/urllib/parse.py" />
+    <entry file="file://E:/Python/Lib/xml/dom/minidom.py" />
+    <entry file="file://E:/Python/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/17장/launcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -526,23 +520,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XML.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3018">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#5334#5814#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-57">
           <caret line="33" column="50" lean-forward="true" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -550,18 +531,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="85" column="46" lean-forward="true" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#173#612#0" />
-            <element signature="e#561#996#0" />
-            <element signature="e#1129#1721#0" />
-            <element signature="e#1785#2302#0" />
-          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PASSWORD.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/3부/25장/teller.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -577,10 +548,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/circle.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MAIL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/1부/9장/circle/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XML.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#5334#5814#0" />
+          </folding>
         </state>
       </provider>
     </entry>
