@@ -1,6 +1,6 @@
-import telepot
 from XML import *
 import time
+import telepot
 
 MAX_MSG_LENGTH = 300
 
