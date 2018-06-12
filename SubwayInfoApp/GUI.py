@@ -4,6 +4,7 @@ from tkinter import font
 from tkinter import messagebox
 from XML import *
 from MAIL import *
+import spam
 
 # 윈도우창
 MainWindow = Tk()
