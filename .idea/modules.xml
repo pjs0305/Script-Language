@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/19장/.idea/19장.iml" filepath="$PROJECT_DIR$/../빠르게활용하는 파이썬 3.6 프로그래밍 python36-master/python36-master/2부/19장/.idea/19장.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Script Language.iml" filepath="$PROJECT_DIR$/.idea/Script Language.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../.idea/스크립트 언어.iml" filepath="$PROJECT_DIR$/../.idea/스크립트 언어.iml" />
     </modules>
   </component>
 </project>
