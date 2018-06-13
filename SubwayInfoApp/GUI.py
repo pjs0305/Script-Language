@@ -5,7 +5,7 @@ from tkinter import messagebox
 from io import BytesIO
 from XML import *
 from MAIL import *
-import spam
+from SIMAGE import *
 
 # 윈도우창
 MainWindow = Tk()
@@ -152,6 +152,12 @@ def CreateWindow(): # 윈도우 설정
     global OpenButton
     OpenButton = Checkbutton(LeftWindow, text="정보 보기", command=OpenCloseRight)
     OpenButton.place(x=300, y=320)
+
+    ScheduleButton = Button(LeftWindow, font=Listfont, text="지하철\n노선도\n보기", command=ShowSubwayLine)
+    ScheduleButton.place(x=20, y=385)
+
+def ShowSubwayLine():
+    ImageWindow(MainWindow)
 
 def AddBookMark():
     global StationListBox
@@ -629,28 +635,6 @@ def CreateSendMailWindow(SendFunc, title):
 
     button = Button(MailWin, text="메일 보내기", command=SendFunc)
     button.pack(anchor="center")
-
-def ShowSubwayLine():
-
-    LineWin = Toplevel(MainWindow, width=400, height=350)
-    LineWin.resizable(False, False)
-    LineWin.title("지하철 노선도")
-
-    ImageFrame = Frame(LineWin)
-    ImageFrame.place(x=50, y=10)
-
-    url = "http://tong.visitkorea.or.kr/cms/resource/74/2396274_image2_1.JPG"
-    with urllib.request.urlopen(url) as u:
-        raw_data = u.read()
-
-    im = Image.open(BytesIO(raw_data))
-    image = ImageTk.PhotoImage(im)
-
-    label = Label(root, image=image, height=400, width=400)
-    label.pack()
-    label.place(x=0, y=0)
-    root.mainloop()
-
 
 # 함수 호출
 CreateWindow()
