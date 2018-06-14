@@ -15,32 +15,7 @@
         <entry file="file://$PROJECT_DIR$/SubwayInfoApp/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="21" lean-forward="true" selection-start-column="21" selection-end-line="1" selection-end-column="23" />
-              <folding>
-                <element signature="e#1890#4880#0" />
-                <element signature="e#4722#5357#0" />
-                <element signature="e#5382#5684#0" />
-                <element signature="e#5717#6095#0" />
-                <element signature="e#6139#6457#0" />
-                <element signature="e#6486#6690#0" />
-                <element signature="e#6717#7194#0" />
-                <element signature="e#7228#8820#0" />
-                <element signature="e#8860#9508#0" />
-                <element signature="e#9532#9580#0" />
-                <element signature="e#9604#9762#0" />
-                <element signature="e#9789#11398#0" />
-                <element signature="e#11428#12069#0" />
-                <element signature="e#12094#12143#0" />
-                <element signature="e#12168#12333#0" />
-                <element signature="e#12360#12945#0" />
-                <element signature="e#12971#13675#0" />
-                <element signature="e#13705#15246#0" />
-                <element signature="e#15281#16853#0" />
-                <element signature="e#16879#16923#0" />
-                <element signature="e#16949#17141#0" />
-                <element signature="e#17169#17605#0" />
-                <element signature="e#17654#18442#0" />
-              </folding>
+              <caret column="21" selection-start-column="21" selection-end-line="1" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -48,8 +23,8 @@
       <file leaf-file-name="SIMAGE.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SubwayInfoApp/SIMAGE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="190">
+              <caret line="94" column="34" lean-forward="true" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -60,8 +35,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SubwayInfoApp/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+            <state relative-caret-position="418">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -74,7 +49,7 @@
       <file leaf-file-name="MAIL.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SubwayInfoApp/MAIL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2508">
+            <state>
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -85,7 +60,7 @@
       <file leaf-file-name="XML.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SubwayInfoApp/XML.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2678">
+            <state relative-caret-position="3363">
               <caret line="180" selection-start-line="180" selection-end-line="180" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
@@ -134,9 +109,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="332" />
-    <option name="y" value="21" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="331" />
+    <option name="y" value="20" />
     <option name="width" value="1325" />
     <option name="height" value="970" />
   </component>
@@ -145,7 +120,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -162,6 +136,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,33 +294,63 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/SubwayInfoApp/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/PASSWORD.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/MAIL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/XML.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3363">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/TELEGRAM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/SIMAGE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SubwayInfoApp/GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2888">
           <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
-          <folding>
-            <element signature="e#1890#4880#0" />
-            <element signature="e#4722#5357#0" />
-            <element signature="e#5382#5684#0" />
-            <element signature="e#5717#6095#0" />
-            <element signature="e#6139#6457#0" />
-            <element signature="e#6486#6690#0" />
-            <element signature="e#6717#7194#0" />
-            <element signature="e#7228#8820#0" />
-            <element signature="e#8860#9508#0" />
-            <element signature="e#9532#9580#0" />
-            <element signature="e#9604#9762#0" />
-            <element signature="e#9789#11398#0" />
-            <element signature="e#11428#12069#0" />
-            <element signature="e#12094#12143#0" />
-            <element signature="e#12168#12333#0" />
-            <element signature="e#12360#12945#0" />
-            <element signature="e#12971#13675#0" />
-            <element signature="e#13705#15246#0" />
-            <element signature="e#15281#16853#0" />
-            <element signature="e#16879#16923#0" />
-            <element signature="e#16949#17141#0" />
-            <element signature="e#17169#17605#0" />
-            <element signature="e#17654#18442#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -384,31 +389,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2888">
           <caret line="159" column="27" selection-start-line="159" selection-start-column="27" selection-end-line="159" selection-end-column="27" />
-          <folding>
-            <element signature="e#1890#4880#0" />
-            <element signature="e#4722#5357#0" />
-            <element signature="e#5382#5684#0" />
-            <element signature="e#5717#6095#0" />
-            <element signature="e#6139#6457#0" />
-            <element signature="e#6486#6690#0" />
-            <element signature="e#6717#7194#0" />
-            <element signature="e#7228#8820#0" />
-            <element signature="e#8860#9508#0" />
-            <element signature="e#9532#9580#0" />
-            <element signature="e#9604#9762#0" />
-            <element signature="e#9789#11398#0" />
-            <element signature="e#11428#12069#0" />
-            <element signature="e#12094#12143#0" />
-            <element signature="e#12168#12333#0" />
-            <element signature="e#12360#12945#0" />
-            <element signature="e#12971#13675#0" />
-            <element signature="e#13705#15246#0" />
-            <element signature="e#15281#16853#0" />
-            <element signature="e#16879#16923#0" />
-            <element signature="e#16949#17141#0" />
-            <element signature="e#17169#17605#0" />
-            <element signature="e#17654#18442#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -458,7 +438,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SubwayInfoApp/MAIL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2508">
+        <state>
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
@@ -467,7 +447,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SubwayInfoApp/XML.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2678">
+        <state relative-caret-position="3363">
           <caret line="180" selection-start-line="180" selection-end-line="180" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
@@ -485,46 +465,21 @@
     <entry file="file://$PROJECT_DIR$/SubwayInfoApp/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#1890#4880#0" />
-            <element signature="e#4722#5357#0" />
-            <element signature="e#5382#5684#0" />
-            <element signature="e#5717#6095#0" />
-            <element signature="e#6139#6457#0" />
-            <element signature="e#6486#6690#0" />
-            <element signature="e#6717#7194#0" />
-            <element signature="e#7228#8820#0" />
-            <element signature="e#8860#9508#0" />
-            <element signature="e#9532#9580#0" />
-            <element signature="e#9604#9762#0" />
-            <element signature="e#9789#11398#0" />
-            <element signature="e#11428#12069#0" />
-            <element signature="e#12094#12143#0" />
-            <element signature="e#12168#12333#0" />
-            <element signature="e#12360#12945#0" />
-            <element signature="e#12971#13675#0" />
-            <element signature="e#13705#15246#0" />
-            <element signature="e#15281#16853#0" />
-            <element signature="e#16879#16923#0" />
-            <element signature="e#16949#17141#0" />
-            <element signature="e#17169#17605#0" />
-            <element signature="e#17654#18442#0" />
-          </folding>
+          <caret column="21" selection-start-column="21" selection-end-line="1" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SubwayInfoApp/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        <state relative-caret-position="418">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SubwayInfoApp/SIMAGE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="190">
+          <caret line="94" column="34" lean-forward="true" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
