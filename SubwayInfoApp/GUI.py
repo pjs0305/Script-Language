@@ -152,8 +152,8 @@ def CreateWindow(): # 윈도우 설정
     OpenButton = Checkbutton(LeftWindow, text="정보 보기", command=OpenCloseRight)
     OpenButton.place(x=300, y=320)
 
-    ScheduleButton = Button(LeftWindow, font=Listfont, text="지하철\n노선도\n보기", command=ShowSubwayLine)
-    ScheduleButton.place(x=20, y=385)
+    ScheduleButton = Button(LeftWindow, font=Listfont, text="지 하 철\n\n노 선 도\n\n보 기", command=ShowSubwayLine)
+    ScheduleButton.place(x=20, y=370)
 
 def ShowSubwayLine():
     ImageWindow(MainWindow, "수도권 1호선")
@@ -609,31 +609,46 @@ def SelectStation():
 def CreateSendMailWindow(SendFunc, title):
     global StationName, StationId
 
-    MailWin = Toplevel(MainWindow, width=350, height=200)
+    MailWin = Toplevel(MainWindow)
+    MailWin.geometry("250x200")
     MailWin.resizable(False, False)
     MailWin.title("메일 보내기")
 
+    dummy1 = Label(MailWin, text="")
+    dummy1.pack(anchor="center")
+
     text1 = Label(MailWin, font=Listfont, text=title)
-    text1.pack(side="top", anchor="center")
+    text1.pack(anchor="center")
     #text1.place(y= 10)
+
+    dummy2 = Label(MailWin, text="")
+    dummy2.pack(anchor="center")
 
     station = StationName + " " + FindStationLine(StationId)
 
     text2 = Label(MailWin, font=Listfont, text=station)
-    text2.pack(side="top", anchor="center")
-    #text2.place(y=50)
+    text2.pack(anchor="center")
+
+    dummy3 = Label(MailWin, text="")
+    dummy3.pack(anchor="center")
 
     global MailInput
-    MailInput = Entry(MailWin)
+    MailInput = Entry(MailWin, width=30)
+    MailInput.bind("<FocusIn>", ClearMailEntry)
+    MailInput.insert(0, "보낼 메일의 주소를 입력하세요.")
     MailInput.pack(anchor="center")
-    #input.place(x=100, y = 120)
 
-    text3 = Label(MailWin, text="보낼 메일 주소")
-    text3.pack(anchor="center")
-    #text3.place(x= 10, y= 118)
+    dummy5 = Label(MailWin, text="")
+    dummy5.pack(anchor="center")
 
     button = Button(MailWin, text="메일 보내기", command=SendFunc)
     button.pack(anchor="center")
+
+    dummy6 = Label(MailWin, text="")
+    dummy6.pack(anchor="center")
+
+def ClearMailEntry(self):
+    MailInput.delete(0, 100)
 
 # 함수 호출
 CreateWindow()

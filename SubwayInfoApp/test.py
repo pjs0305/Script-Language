@@ -1,34 +1,32 @@
-import tkinter
+from tkinter import *
+from tkinter import ttk
+from tkinter import font
+from tkinter import messagebox
 
-window=tkinter.Tk()
-window.title("YUN DAE HEE")
-window.geometry("640x400+100+100")
-window.resizable(True, True)
+def gg(self):
+    self.delete(0, 100)
 
-width=1
+MailWin = Tk()
+MailWin.geometry("250x200")
+MailWin.resizable(False, False)
+MailWin.title("메일 보내기")
 
-def drawing(event):
-    if width>0:
-        x1=event.x-1
-        y1=event.y-1
-        x2=event.x+1
-        y2=event.y+1
-        canvas.create_oval(x1, y1, x2, y2, fill="blue", width=width)
 
-def scroll(event):
-    global width
-    if event.delta==120:
-        width+=1
-    if event.delta==-120:
-        width-=1
-    label.config(text=str(width))
+text1 = Label(MailWin, text="아아아아아아", font=12)
+text1.pack(anchor="center")
 
-canvas=tkinter.Canvas(window, relief="solid", bd=2)
-canvas.pack(expand=True, fill="both")
-canvas.bind("<B1-Motion>", drawing)
-canvas.bind("<MouseWheel>", scroll)
+text2 = Label(MailWin, text="기기기기기기", font=12)
+text2.pack(anchor="center")
 
-label=tkinter.Label(window, text=str(width))
-label.pack()
 
-window.mainloop()
+MailInput = Entry(MailWin, width=30)
+MailInput.bind("<FocusIn>", gg)
+MailInput.insert(0, "보낼 메일의 주소를 입력하세요.")
+MailInput.pack(anchor="center")
+
+
+button = Button(MailWin, text="메일 보내기")
+button.pack(anchor="center")
+
+
+MailWin.mainloop()

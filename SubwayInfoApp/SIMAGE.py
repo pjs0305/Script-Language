@@ -16,12 +16,12 @@ class ImageWindow:
         self.image_h = 1958
 
         # 이미지 축소 시 간격
-        self.image_w_s = self.image_w // 6
-        self.image_h_s = self.image_h // 6
+        self.image_w_s = self.image_w // 4
+        self.image_h_s = self.image_h // 4
 
         # 이미지 프레임 크기
         self.imageFrame_w = 600
-        self.imageFrame_h = 500
+        self.imageFrame_h = 480
 
         # 노선도 이미지 표시할 프레임
         self.LineWindow = Frame(self.window, width=500, height=400)
