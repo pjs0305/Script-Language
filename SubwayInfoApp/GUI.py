@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
-from io import BytesIO
 from XML import *
 from MAIL import *
 from SIMAGE import *
@@ -157,7 +156,7 @@ def CreateWindow(): # 윈도우 설정
     ScheduleButton.place(x=20, y=385)
 
 def ShowSubwayLine():
-    ImageWindow(MainWindow)
+    ImageWindow(MainWindow, "수도권 1호선")
 
 def AddBookMark():
     global StationListBox
