@@ -2,14 +2,17 @@ from xml.dom.minidom import parse, parseString
 from xml.etree import ElementTree
 import urllib.parse
 import urllib.request
+import spam
 
 client_key = "serviceKey=QCt6OJN%2BX%2BK%2F1QWhl3xAV6wrYByNl7oLDFyYobuvd%2FXsKryONWzAm0FH9zbTDU0syJHEkFxCHE31CKqoCcUIKg%3D%3D"
 keymenu = ["subwayStationName", "subwayStationId", "dailyTypeCode", "upDownTypeCode"]
 DayList = { "평일" : "01", "토요일" : "02", "일요일" : "03" }
 UpDown = { "상행" : "U", "하행" : "D" }
 
+'''
 def LoadXML(search, key, **data):
-    s = "http://openapi.tago.go.kr/openapi/service/SubwayInfoService/" + search + "?" + key + "&"
+    s = spam.MakeURL1(search)
+    #s = "http://openapi.tago.go.kr/openapi/service/SubwayInfoService/" + search + "?" + key + "&"
 
     for d in data.keys():
         s += d + "=" + data[d] + "&"
@@ -21,12 +24,23 @@ def LoadXML(search, key, **data):
     dom = parseString(response_body)
 
     return (ElementTree.fromstring(dom.toxml()))
+'''
+def LoadXML(URL):
+    request = urllib.request.Request(URL)
+    response = urllib.request.urlopen(request)
+    response_body = response.read()
+    dom = parseString(response_body)
+
+    return (ElementTree.fromstring(dom.toxml()))
 
 # 역 검색
 def FindStation(text):
     encText = urllib.parse.quote(text)
 
-    tree = LoadXML("getKwrdFndSubwaySttnList", client_key, subwayStationName=encText)
+    URL = spam.MakeURL1("getKwrdFndSubwaySttnList")
+    URL += spam.MakeURL2(subwayStationName=encText)
+
+    tree = LoadXML(URL)
     itemElements = tree.getiterator("item") # tree 내의 item만 뽑아오기
 
     searchList = {} # 검색된 지하철역과 ID를 저장할 사전
@@ -165,7 +179,12 @@ def FindStationLine(ID): # 지하철역 ID에 따라 라인 구분
 # 버스 조회
 def FindBus(ID):
     encID = urllib.parse.quote(ID)
-    tree = LoadXML("getSubwaySttnExitAcctoBusRouteList", client_key, subwayStationId=encID)
+
+    URL = spam.MakeURL1("getSubwaySttnExitAcctoBusRouteList")
+    URL += spam.MakeURL2(subwayStationId=encID)
+
+    tree = LoadXML(URL)
+    #tree = LoadXML("getSubwaySttnExitAcctoBusRouteList", client_key, subwayStationId=encID)
 
     itemElements = tree.getiterator("item")
 
@@ -182,7 +201,12 @@ def FindBus(ID):
 # 건물 조회
 def FindBuilding(ID):
     encID = urllib.parse.quote(ID)
-    tree = LoadXML("getSubwaySttnExitAcctoCfrFcltyList", client_key, subwayStationId=encID)
+
+    URL = spam.MakeURL1("getSubwaySttnExitAcctoCfrFcltyList")
+    URL += spam.MakeURL2(subwayStationId=encID)
+
+    tree = LoadXML(URL)
+    #tree = LoadXML("getSubwaySttnExitAcctoCfrFcltyList", client_key, subwayStationId=encID)
 
     itemElements = tree.getiterator("item")
 
@@ -202,7 +226,13 @@ def FindSchedule(ID, DayType, UDType):
     encDay = urllib.parse.quote(DayType)
     encUD = urllib.parse.quote(UDType)
 
-    tree = LoadXML("getSubwaySttnAcctoSchdulList", client_key, subwayStationId=encID, dailyTypeCode=encDay, upDownTypeCode=encUD)
+
+    URL = spam.MakeURL1("getSubwaySttnAcctoSchdulList")
+    URL += spam.MakeURL2(subwayStationId=encID, dailyTypeCode=encDay, upDownTypeCode=encUD)
+
+    tree = LoadXML(URL)
+    #tree = LoadXML("getSubwaySttnAcctoSchdulList", client_key, subwayStationId=encID, dailyTypeCode=encDay, upDownTypeCode=encUD)
+
     itemElements = tree.getiterator("arrTime")
 
     HourList = {}
