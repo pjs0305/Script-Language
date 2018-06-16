@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+import win32api
 
 class ImageWindow:
     def __init__(self, mainWindow, txt):
@@ -32,6 +33,7 @@ class ImageWindow:
 
         self.scale = Scale(self.LineWindow, variable=self.ScaleVar, command=self.PhotoResize, orient="horizontal", showvalue=False, from_=0,
                       to=3, length=self.imageFrame_w)
+
         self.scale.pack(side="top")
         # # # # # # # # # # # # # #
 
@@ -62,6 +64,9 @@ class ImageWindow:
         self.ImageFrame.pack()
 
         self.label = Label(self.ImageFrame, image=self.tk_image[0])
+        self.label.bind("<MouseWheel>", self.WheelMove)
+        self.label.bind("<Button-2>", self.WheelClick)
+        self.label.bind("<B2-Motion>", self.WheelClickMove)
 
         self.SetPosition()
         # # # # # # # # # # # # # #
@@ -82,13 +87,44 @@ class ImageWindow:
 
         self.combobox.set("수도권 1호선")
 
-    def SetPhoto(self, self1=1):
+    def WheelClick(self, event):
+        self.startx, self.starty = win32api.GetCursorPos()
+        self.startSx = self.Scrollx.get()
+        self.startSy = self.Scrolly.get()
+
+    def WheelClickMove(self, event):
+        self.deltax = win32api.GetCursorPos()[0] - self.startx
+        self.deltay = win32api.GetCursorPos()[1] - self.starty
+
+        SetScrollx = self.deltax // 150
+        SetScrolly = self.deltay // 150
+
+        self.Scrollx.set( self.startSx + SetScrollx)
+        self.Scrolly.set( self.startSy + SetScrolly)
+
+    def WheelMove(self, event):
+        if event.delta < 0:
+            SetScaleScroll = self.scale.get() + 1
+            if SetScaleScroll > self.scale["to"]:
+                SetScaleScroll = self.scale["to"]
+        elif event.delta > 0:
+            SetScaleScroll = self.scale.get() - 1
+            if SetScaleScroll < 0:
+                SetScaleScroll = 0
+
+        self.scale.set(SetScaleScroll)
+
+    def SetPhoto(self, event=None):
         self.Text = self.combobox.get()
         self.SetPhotoList()
 
         value = self.scale.get()
 
         self.label = Label(self.ImageFrame, image=self.tk_image[value])
+        self.label.bind("<MouseWheel>", self.WheelMove)
+        self.label.bind("<Button-2>", self.WheelClick)
+        self.label.bind("<B2-Motion>", self.WheelClickMove)
+
         self.SetPosition()
 
     def SetPhotoList(self):
@@ -129,12 +165,15 @@ class ImageWindow:
 
         self.label.place(x=-IPx, y=-IPy)
 
-    def PhotoResize(self, self2):
+    def PhotoResize(self, event=None):
         value = self.scale.get()
 
         self.label = Label(self.ImageFrame, image=self.tk_image[value])
+        self.label.bind("<MouseWheel>", self.WheelMove)
+        self.label.bind("<Button-2>", self.WheelClick)
+        self.label.bind("<B2-Motion>", self.WheelClickMove)
 
         self.SetPosition()
 
-    def PhotoScroll(self, self2):
+    def PhotoScroll(self, event=None):
         self.SetPosition()

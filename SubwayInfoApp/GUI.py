@@ -309,7 +309,7 @@ def ShowBus(): # 버스 조회 GUI
         ShowBusList()
 
         EmailButton = Button(RightWindow, text= "조회 결과 메일로 보내기", font = Listfont, command = MailBusInf)
-        EmailButton.place(x=80, y=445)
+        EmailButton.place(x=100, y=445)
     else:
         Text1 = Label(RightWindow, text="조회 결과가 없음", font=Subfont)
         Text1.place(x=130, y=150)
